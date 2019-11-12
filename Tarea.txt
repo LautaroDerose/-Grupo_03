@@ -1,3 +1,6 @@
+!!!!! USAR BOOTSTRAP 4 !!!!!
+
+
 Tenés que crear un sitio web, el cual sea responsive y navegable a través de enlaces del mismo sitio con las siguientes páginas:
 
    Lautaro
