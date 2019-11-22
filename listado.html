@@ -31,6 +31,9 @@
             <li class="nav-item">
               <a class="nav-link" href="registro.html">Registro</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="listado.html">Todos los Productos</a>
+            </li>
           </ul>
           <div>
             <a class="nav-link" href="usuario.html" title="Usuario">Mostrar usuario</a>
@@ -56,9 +59,12 @@
               <p class="card-text">Computadora de escritorio con procesador de ultima generacion, gran capacidad y monitor de alta resolucion incluido</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-primary">Comprar Ahora</button>
+                  <form method="get" action="producto.html">
+                  <button type="submit" formaction="producto.html" class="btn btn-sm btn-outline-primary">Comprar Ahora</button>
                   <button type="button" class="btn btn-sm btn-outline-secondary">Añadir al Carrito</button>
+                </form>
                 </div>
+
                 <small class="text-muted">9 mins</small>
               </div>
             </div>
