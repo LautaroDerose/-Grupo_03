@@ -16,12 +16,17 @@ if(empty($_SESSION)){
   <title>Home</title>
 </head>
 <body>
-	<div class="container">
+<div class="container">
 
-		<?php include_once("partials/header.php") ?>
-		<h1>Bienvenido a Cotillon DH! <?= $_SESSION["nombre"] ?></h1>	
+	<?php include_once("partials/header.php") ?>	
+	
+	<div class="jumbotron jumbotron-fluid">
+  		<div class="container">
+    		<h1>Bienvenido a Cotillon DH! <?= $_SESSION["nombre"] ?></h1>	
+    		<p class="lead">Ahora puedes realizar busquedas de tus productos favoritos y comprarlos!.</p>
+  		</div>
 	</div>
-
+</div>
 	
 
 
