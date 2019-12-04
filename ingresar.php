@@ -1,3 +1,41 @@
+<?php
+
+session_start();
+require_once "controller/validar.php";
+require_once "controller/manejoJson.php";
+require_once "controller/usuario.php";
+
+$error = "";
+
+if (!empty($_SESSION)) {
+  header('Location: bienvenida.php');
+}
+
+if ($_POST){
+  $error = validarDatos($_POST);  //funcion que valida los datos ingresados.
+  if (count($error) == 0){
+    $allUsers = abrirJson();     //obtengo array con todos los usuarios.
+   
+    foreach ($allUsers as $value) {
+      foreach ($value as $user) {
+        if ($user["email"] == $_POST["email"]){
+          if( password_verify($_POST['pass'], $user['password']) ){
+            $_SESSION["id"] =$user["id"];
+            $_SESSION["nombre"] =$user["nombre"];
+            header("Location: bienvenida.php");
+          }
+        }
+      }
+    }
+    cerrarJson($allUsers);
+  }
+}
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -14,11 +52,13 @@
         <br>
         <img class="img-responsive" src="images/perfil-user.svg" height="300px" width="220px" alt="perfil">
         <h2 class="form-signin-heading">Ingresar</h2>
-        <form class="form-signin">
+        <form class="form-signin" action="" method="post">
             <label for="inputEmail" class="sr-only">Email</label>
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+            <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email" value="<?= persistirDato($error, 'email') ?>" autofocus>
+            <small  class="text-danger"> <?= isset($error['email']) ? $error['email'] : "" ?></small>
+
             <label for="inputPassword" class="sr-only">Contraseña</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
+            <input type="password" id="inputPassword" class="form-control" name="pass" placeholder="Contraseña" >
             <div class="checkbox">
               <br>
               <label>
@@ -26,8 +66,7 @@
               </label>
             </div>
             <button class="btn btn-lg btn-primary btn-block black-background white" type="submit">Entrar</button>
-            <button class="btn btn-lg btn-primary btn-block black-background white" type="submit">Registro</button>
-
+            <p>¿ No tenes cuenta ? <a href="registro.php">Registrate!</a></p>
         </form>
       </div>
       <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>

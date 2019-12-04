@@ -1,11 +1,9 @@
 <?php
-
 session_start();
 
-if (!empty($_SESSION)) {
-	header('Location: bienvenida.php');
+if(empty($_SESSION)){
+	header('Location: home.php');
 }
-
 
 ?>
 
@@ -20,8 +18,11 @@ if (!empty($_SESSION)) {
 <body>
 	<div class="container">
 
-		<?php include_once("partials/header.php") ?>	
+		<?php include_once("partials/header.php") ?>
+		<h1>Bienvenido a Cotillon DH! <?= $_SESSION["nombre"] ?></h1>	
 	</div>
+
+	
 
 
  <?php include_once("partials/footer.php")?>

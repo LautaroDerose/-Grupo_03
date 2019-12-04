@@ -15,28 +15,34 @@
             <a class="nav-link" href="FAQ.php">F.A.Q.</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="contacto.php">Contacto</a>
+          </li>
+          <?php if(empty($_SESSION)):?>
+          <li class="nav-item">
             <a class="nav-link" href="ingresar.php">Login</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="registro.php">Registro</a>
           </li>
+          <?php endif?>
+           <?php if(!empty($_SESSION)):?>
           <li class="nav-item">
             <a class="nav-link" href="listado.php">Todos los Productos</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="producto.php">Producto</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contacto.php">Contacto</a>
-          </li>
-
         </ul>
+        <div>
+          <a class="nav-link" href="carrito.php"><img src="images/shopping-cart.svg" width="25px" height="25px" alt="carrito-icon" title="Carrito de compras"></a>
+        </div>
         <div>
           <a class="nav-link" href="usuario.php" title="Usuario">Mostrar usuario</a>
         </div>
         <div>
-          <a class="nav-link" href="carrito.php"><img src="images/shopping-cart.svg" width="25px" height="25px" alt="carrito-icon" title="Carrito de compras"></a>
+          <a class="nav-link" href="salir.php" title="Usuario">Cerrar Sesion</a>
         </div>
+        <?php endif?>
       </div>
     </nav>
   </header>
