@@ -22,6 +22,7 @@ if ($_POST){
 
     $allUsers["usuarios"][]= $usuario;    // agrego el usuario al array de usuarios
     cerrarJson($allUsers);                //transformo el array a json y lo subo
+    header('Location: ingresar.php');
   }
 }
 

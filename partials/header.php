@@ -37,7 +37,7 @@
           <a class="nav-link" href="carrito.php"><img src="images/shopping-cart.svg" width="25px" height="25px" alt="carrito-icon" title="Carrito de compras"></a>
         </div>
         <div>
-          <a class="nav-link" href="usuario.php" title="Usuario">Mostrar usuario</a>
+          <a class="nav-link" href="usuario.php" title="Usuario">Mis Datos</a>
         </div>
         <div>
           <a class="nav-link" href="salir.php" title="Usuario">Cerrar Sesion</a>

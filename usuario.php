@@ -5,11 +5,22 @@ if (empty($_SESSION)) {
   header('Location: bienvenida.php');
 }
 
+require_once 'controller/manejoJson.php';
+
+$array = abrirJson();
+
+foreach ($array as $value) {
+  foreach ($value as $user) {
+    if ($user["id"] == $_SESSION["id"]) {
+      $nombre = $user["nombre"];
+      $apellido = $user["apellido"];
+      $email = $user["email"];
+    }
+  }
+}
+
 
 ?>
-
-
-
 
 <html>
 <head>
@@ -39,15 +50,15 @@ if (empty($_SESSION)) {
         <tbody>
           <tr>
             <th scope="row">Nombre:</th>
-            <td>User</td>
+            <td><?= $nombre ?></td>
           </tr>
           <tr>
-            <th scope="row">Correo:</th>
-            <td>user@gmail.com</td>
+            <th scope="row">Apellido:</th>
+            <td><?= $apellido?></td>
           </tr>
           <tr>
-            <th scope="row">Direccion:</th>
-            <td>Evergreen Terrace n° 742</td>
+            <th scope="row">Email:</th>
+            <td><?= $email ?></td>
           </tr>
         </tbody>
       </table>
