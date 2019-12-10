@@ -11,7 +11,6 @@ if (!empty($_SESSION)) {
 ?>
 
 
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -32,6 +31,5 @@ if (!empty($_SESSION)) {
 </div>
 
  <?php include_once("partials/footer.php")?>
->>>>>>> bf499259405676ef6bbfbd7fab8e622247104eea
 </body>
 </html>
