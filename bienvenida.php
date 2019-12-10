@@ -1,12 +1,9 @@
-
 <?php
-
 session_start();
 
-if (!empty($_SESSION)) {
-	header('Location: bienvenida.php');
+if(empty($_SESSION)){
+	header('Location: home.php');
 }
-
 
 ?>
 
@@ -25,13 +22,14 @@ if (!empty($_SESSION)) {
 	
 	<div class="jumbotron jumbotron-fluid">
   		<div class="container">
-    		<h1 class="display-4">Bienvenido a cotillon dh! </h1>
-    		<p class="lead">Aca vas a encontrar los productos mas variados y al mejor precio :).</p>
+    		<h1>Bienvenido a Cotillon DH! <?= $_SESSION["nombre"] ?></h1>	
+    		<p class="lead">Ahora puedes realizar busquedas de tus productos favoritos y comprarlos!.</p>
   		</div>
 	</div>
 </div>
+	
+
 
  <?php include_once("partials/footer.php")?>
->>>>>>> bf499259405676ef6bbfbd7fab8e622247104eea
 </body>
 </html>
