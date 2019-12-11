@@ -15,10 +15,8 @@ if ($_POST){
   $error = validarDatos($_POST);  //funcion que valida los datos ingresados.
   if (count($error) == 0){
     $allUsers = abrirJson();     //obtengo array con todos los usuarios. 
-    var_dump($allUsers);
     foreach ($allUsers as $value) {
       foreach ($value as $user) {
-        var_dump($user);
         if ($user["email"] == $_POST["email"]){
           if( password_verify($_POST['pass'], $user['password']) ){
             $_SESSION["id"] =$user["id"];
