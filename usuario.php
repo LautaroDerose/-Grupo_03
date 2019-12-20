@@ -24,7 +24,7 @@ foreach ($array as $value) {
 
 <html>
 <head>
-  
+
   <title>Datos del usuario</title>
 
   <?php include_once("partials/config.php") ?>
