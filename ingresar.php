@@ -14,14 +14,18 @@ if (!empty($_SESSION)) {
 if ($_POST){
   $error = validarDatos($_POST);  //funcion que valida los datos ingresados.
   if (count($error) == 0){
-    $allUsers = abrirJson();     //obtengo array con todos los usuarios.
-   
+    $allUsers = abrirJson();     //obtengo array con todos los usuarios. 
     foreach ($allUsers as $value) {
       foreach ($value as $user) {
         if ($user["email"] == $_POST["email"]){
           if( password_verify($_POST['pass'], $user['password']) ){
             $_SESSION["id"] =$user["id"];
             $_SESSION["nombre"] =$user["nombre"];
+            if (isset($_POST["recordarme"])) {
+              $_SESSION["password"] =$user["password"];
+              setcookie("recordarme", "true");
+              setcookie("email", $user["email"]);
+            }
             header("Location: bienvenida.php");
           }
         }
@@ -54,15 +58,20 @@ if ($_POST){
         <h2 class="form-signin-heading">Ingresar</h2>
         <form class="form-signin" action="" method="post">
             <label for="inputEmail" class="sr-only">Email</label>
+            <?php if (isset ($_COOKIE["recordarme"])):  ?>
+            <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email" value="<?= $_COOKIE["email"]?>" autofocus>
+          <?php else: ?>
+
             <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email" value="<?= persistirDato($error, 'email') ?>" autofocus>
             <small  class="text-danger"> <?= isset($error['email']) ? $error['email'] : "" ?></small>
+          <?php endif ?>
 
             <label for="inputPassword" class="sr-only">Contraseña</label>
             <input type="password" id="inputPassword" class="form-control" name="pass" placeholder="Contraseña" >
             <div class="checkbox">
               <br>
               <label>
-                <input type="checkbox" value="remember-me"> Recordarme
+                <input type="checkbox" name="recordarme" value=""> Recordarme
               </label>
             </div>
             <button class="btn btn-lg btn-primary btn-block black-background white" type="submit">Entrar</button>

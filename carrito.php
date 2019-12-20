@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 
@@ -17,12 +18,13 @@ if(empty($_SESSION)){
 </head>
 <body>
 	<div class="container">
-	<?php include_once("partials/header.php")?>
 
+	<?php include_once("partials/header.php")?>
 	<section class="ml-4 mt-4">
 		<div class="row pt-4">
 			<div class="col-lg-6 col-md-4 col-xs-12 ">
 				<h2>Producto</h2>
+
 				<a href="#"><img class="img-responsive" src="images/globos.svg" height="300px" width="220px" alt ="image-producto"></a>
 				<button type="button" class="btn btn-primary btn-block">Ver productos similares</button>
 			</div>
@@ -75,7 +77,6 @@ if(empty($_SESSION)){
 			</div>
 		</div>
 	</section>
-
 <?php include_once("partials/footer.php")?>
 </body>
 </html>
