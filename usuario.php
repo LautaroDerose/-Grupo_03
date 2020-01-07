@@ -15,6 +15,9 @@ foreach ($array as $value) {
       $nombre = $user["nombre"];
       $apellido = $user["apellido"];
       $email = $user["email"];
+      if (isset($user["archivo"])) {
+        $archivo = $user["archivo"];
+      }
     }
   }
 }
@@ -41,7 +44,7 @@ foreach ($array as $value) {
 
       <div class="col-lg-8 col-md-6 col-xs-12 ">
 
-       <a href="#"><img class="img-responsive" src="images/perfil-user.svg" height="300px" width="220px" alt ="image-perfil"></a>
+       <a href="#"><img class="img-responsive" src="images-perfil/<?php echo "$archivo" ?>" height="300px" width="220px" alt ="image-perfil"></a>
        <p><a href="">Editar foto de perfil</a></p>
      </div>
      <div class="col-lg-4 col-md-6 col-xs-12 mt-4">

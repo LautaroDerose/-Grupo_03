@@ -18,12 +18,15 @@
             <a class="nav-link" href="contacto.php">Contacto</a>
           </li>
           <?php if(empty($_SESSION)):?>
-          <li class="nav-item">
-            <a class="nav-link" href="ingresar.php">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="registro.php">Registro</a>
-          </li>
+          </ul>  
+          <div class=" navbar-nav">
+            <div class="nav-item ">
+              <a class="nav-link" href="ingresar.php">Login</a>
+            </div>
+            <div class="nav-item ">
+              <a class="nav-link" href="registro.php">Registro</a>
+            </div>
+          </div>
           <?php endif?>
            <?php if(!empty($_SESSION)):?>
           <li class="nav-item">

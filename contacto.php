@@ -31,7 +31,7 @@ session_start();
         <textarea placeholder="Deja tu mensaje aquí..." tabindex="5" required></textarea>
       </fieldset>
       <fieldset>
-        <button name="submit" type="submit" id="contact-submit" data-submit="submit">Enviar</button>
+        <button name="submit" type="submit" id="contact-submit" class="btn btn-lg btn-primary btn-block black-background white" data-submit="submit">Enviar</button>
       </fieldset>
     </form>
 

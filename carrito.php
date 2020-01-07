@@ -22,14 +22,14 @@ if(empty($_SESSION)){
 	<?php include_once("partials/header.php")?>
 	<section class="ml-4 mt-4">
 		<div class="row pt-4">
-			<div class="col-lg-6 col-md-4 col-xs-12 ">
+			<div class="col-lg-6 col-md-6 col-xs-12 ">
 				<h2>Producto</h2>
 
 				<a href="#"><img class="img-responsive" src="images/globos.svg" height="300px" width="220px" alt ="image-producto"></a>
 				<button type="button" class="btn btn-primary btn-block">Ver productos similares</button>
 			</div>
 
-			<div class="col-lg-5 col-md-4 col-xs-12  mt-4 mr-1">
+			<div class="col-lg-5 col-md-5 col-xs-12  mt-4 mr-1">
 				<table class="table table-hover table-bordered">
 					<tbody>
 						<thead>
