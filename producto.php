@@ -20,7 +20,11 @@ if(empty($_SESSION)){
   </head>
   <body>
     <div class="container">
-      <?php include_once("partials/header.php") ?> 
+  <?php if($_SESSION["id"] = 1):?>
+    <?php include_once("partials/headerAdmin.php")?>
+  <?php else: ?>
+    <?php include_once("partials/header.php")?>
+  <?php endif?> 
     </div>
     
     <main>

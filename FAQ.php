@@ -11,7 +11,11 @@ session_start();
 </head>
 <body>
   <div class="container">
+  <?php if($_SESSION["id"] = 1):?>
+    <?php include_once("partials/headerAdmin.php")?>
+  <?php else: ?>
     <?php include_once("partials/header.php")?>
+  <?php endif?> 
 
   </div>
 

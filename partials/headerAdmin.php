@@ -1,4 +1,3 @@
-
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light ">
       <a class="navbar-brand" href="#">Cotillon DH!</a>
@@ -17,6 +16,9 @@
           <li class="nav-item">
             <a class="nav-link" href="contacto.php">Contacto</a>
           </li>
+          <li class="nav-item ">
+              <a class="nav-link" href="añadir.php">Añadir producto</a>
+          </li>
           <?php if(empty($_SESSION)):?>
           </ul>  
           <div class=" navbar-nav">
@@ -26,6 +28,7 @@
             <div class="nav-item ">
               <a class="nav-link" href="registro.php">Registro</a>
             </div>
+            
           </div>
           <?php endif?>
            <?php if(!empty($_SESSION)):?>

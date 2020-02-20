@@ -4,6 +4,8 @@ session_start();
 require_once "controller/validar.php";
 require_once "controller/manejoJson.php";
 require_once "controller/usuario.php";
+require_once "controller/consultas.php";
+require_once "controller/conexion.php";
 
 $error = "";
 
@@ -13,7 +15,39 @@ if (!empty($_SESSION)) {
 
 if ($_POST){
   $error = validarDatos($_POST);  //funcion que valida los datos ingresados.
+
   if (count($error) == 0){
+
+    $usuario = buscarUsuarioEmail($db, $_POST);
+    if(!empty($usuario)){
+      if ($usuario["email"] == $_POST["email"]){
+          if( password_verify($_POST['pass'], $usuario['password']) ){
+            $_SESSION["id"] =$usuario["id"];
+            $_SESSION["nombre"] =$usuario["nombre"];
+            if (isset($_POST["recordarme"])) {
+              $_SESSION["password"] =$usuario["password"];
+              setcookie("recordarme", "true");
+              setcookie("email", $usuario["email"]);
+            }
+            if ($usuario["email"] = "admin@admin.com") {
+              header("Location: configuracion.php");
+            }else{
+              header("Location: bienvenida.php");
+            }
+            
+          }
+          else{
+            $error['pass'] = "Contraseña incorrecta";
+          }
+        } else {
+          $error['email'] = "Email incorrecto"; 
+        } 
+      }
+    }
+
+
+
+    /*
     $allUsers = abrirJson();     //obtengo array con todos los usuarios. 
     foreach ($allUsers as $value) {
       foreach ($value as $user) {
@@ -37,8 +71,10 @@ if ($_POST){
       }
     }
     cerrarJson($allUsers);
+   */
+    
   }
-}
+
 
 
 ?>

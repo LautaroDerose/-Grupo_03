@@ -37,7 +37,12 @@ foreach ($array as $value) {
 </head>
 <body>
   <div class="container">
-  <?php include_once("partials/header.php")?>
+  <?php if($_SESSION["id"] = 1):?>
+    <?php include_once("partials/headerAdmin.php")?>
+  <?php else: ?>
+    <?php include_once("partials/header.php")?>
+  <?php endif?> 
+  
 
   <section class="ml-4 mt-4">
     <div class="row ml-4">

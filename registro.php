@@ -4,6 +4,8 @@ session_start();
 require_once "controller/validar.php";
 require_once "controller/manejoJson.php";
 require_once "controller/usuario.php";
+require_once "controller/conexion.php";
+require_once "controller/consultas.php";
 
 $error = "";
 if (!empty($_SESSION)) {
@@ -13,20 +15,27 @@ if (!empty($_SESSION)) {
 if ($_POST){
   $error = validarDatos($_POST);            //funcion que valida los datos ingresados.
   if (count($error) == 0){
-    $allUsers = abrirJson();              //obtengo array con todos los usuarios.
-    $id = count($allUsers["usuarios"]) + 1;
-    $usuario= armarUsuario($_POST, $id);    // arma un array con datos del usuario
-    if(!empty($_FILES)){                    // si hay archivos en files
-      $usuario=  verificarArchivo($_FILES, $usuario, $id);    //verifico los datos
-    }
+
+    insertarUsuario($db, $_POST);
+
     if (isset($_POST["recordarme"])) {
       setcookie("recordarme", "true");
       setcookie("email", $_POST["email"]);
       setcookie("nombre", $_POST["nombre"]);
       setcookie("apellido", $_POST["apellido"]);
     }
+
+    /*
+    $allUsers = abrirJson();              //obtengo array con todos los usuarios.
+    $id = count($allUsers["usuarios"]) + 1;
+    $usuario= armarUsuario($_POST, $id);    // arma un array con datos del usuario
+    if(!empty($_FILES)){                    // si hay archivos en files
+      $usuario=  verificarArchivo($_FILES, $usuario, $id);    //verifico los datos
+    }
+  
     $allUsers["usuarios"][]= $usuario;    // agrego el usuario al array de usuarios
-    cerrarJson($allUsers);                //transformo el array a json y lo subo
+    cerrarJson($allUsers);      
+    */                                    //transformo el array a json y lo subo
     header('Location: ingresar.php');
   }
 }
