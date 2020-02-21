@@ -77,13 +77,15 @@ function obtenerProductos($db){
 }
 
 function eliminarProducto($db, $id){
+
 	$sql="
-	DELETE FROM productos 
-	WHERE id = :id
-
-
+	DELETE
+	FROM productos 
+	WHERE idProducto=:id
 	";
+
 	$consulta = $db->prepare($sql);
+
 	$consulta->bindValue(':id', $id, PDO::PARAM_INT);
 	$consulta->execute();
 }

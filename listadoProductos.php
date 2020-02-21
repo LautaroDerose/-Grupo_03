@@ -7,6 +7,10 @@ if(empty($_SESSION)){
   header('Location: home.php');
 }
 
+if (!empty($_POST)) {
+  eliminarProducto($db, $_POST["idProd"]);
+}
+
 $productos = obtenerProductos($db);
 
 ?>
@@ -48,6 +52,10 @@ $productos = obtenerProductos($db);
                   <h5 class="card-title"><?php echo "precio: $".$producto["precio"]; ?></h5>
                   <p class="card-text"><?php echo $producto["descripcion"]; ?></p>
                 </div>
+                <form class="form-signin" action="listadoProductos.php" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" id="idProd" name="idProd" class="form-control" value="<?= $producto["idProducto"]?>" autofocus>             
+                    <button class="btn btn-lg btn-primary btn-block black-background white" type="submit">Eliminar</button>
+                </form>  
               </div>
           </div>
         <?php }?>
