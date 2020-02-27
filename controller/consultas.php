@@ -20,6 +20,48 @@ function buscarUsuarioEmail($db, $usuario){
 
 
 }
+function buscarUsuarioId($db, $id){
+	$idUs= $id;
+
+	$sql = 
+	"SELECT * 
+	FROM usuarios
+	WHERE idUsuario = :id";
+
+	$consulta = $db->prepare($sql);
+	$consulta->bindValue(':id', $idUs, PDO::PARAM_STR);
+	//ejecuto la consulta
+	$consulta->execute();
+
+	//leo los resultados obtenidos
+	$resultado = $consulta->fetch(PDO::FETCH_ASSOC);  
+
+	return $resultado;
+
+
+}
+
+function editarUsuario($db, $usuario){
+	$nombre = $usuario["nombre"];
+	$apellido = $usuario["apellido"];
+	$email = $usuario["email"];
+	$id= $usuario["idUsuario"];
+	$sql=
+	"
+	UPDATE usuarios
+	SET nombre= :nombre, apellido=:apellido, email=:email 
+	WHERE idUsuario=:id
+	";
+	$consulta = $db->prepare($sql);
+	$consulta->bindValue(':id', $id, PDO::PARAM_INT);
+	$consulta->bindValue(':nombre', $nombre, PDO::PARAM_STR);
+	$consulta->bindValue(':apellido', $apellido, PDO::PARAM_INT);
+	$consulta->bindValue(':email', $email, PDO::PARAM_STR);
+	$consulta->execute();
+
+
+}
+
 
 function insertarUsuario($db, $usuario){
 	$nombre = $usuario["nombre"];
@@ -88,6 +130,46 @@ function eliminarProducto($db, $id){
 
 	$consulta->bindValue(':id', $id, PDO::PARAM_INT);
 	$consulta->execute();
+}
+
+function obtenerProductoId($db, $id){
+
+	$sql = 
+	"SELECT * 
+	FROM productos
+	WHERE idProducto= :id";
+
+	$consulta = $db->prepare($sql);
+	$consulta->bindValue(':id', $id, PDO::PARAM_INT);
+	//ejecuto la consulta
+	$consulta->execute();
+
+	//leo los resultados obtenidos
+	$resultado = $consulta->fetch(PDO::FETCH_ASSOC);  
+
+	return $resultado;
+
+}
+
+function editarProducto($db, $producto){
+	$nombre = $producto["nombre"];
+	$precio = $producto["precio"];
+	$descripcion = $producto["descripcion"];
+	$id= $producto["idProd"];
+	$sql=
+	"
+	UPDATE productos
+	SET nombre= :nombre, precio=:precio, descripcion=:descripcion 
+	WHERE idProducto=:id
+	";
+	$consulta = $db->prepare($sql);
+	$consulta->bindValue(':id', $id, PDO::PARAM_INT);
+	$consulta->bindValue(':nombre', $nombre, PDO::PARAM_STR);
+	$consulta->bindValue(':precio', $precio, PDO::PARAM_INT);
+	$consulta->bindValue(':descripcion', $descripcion, PDO::PARAM_STR);
+	$consulta->execute();
+
+
 }
 
 

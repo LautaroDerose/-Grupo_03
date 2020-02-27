@@ -6,7 +6,16 @@ if (empty($_SESSION)) {
 }
 
 require_once 'controller/manejoJson.php';
+require_once "controller/consultas.php";
+require_once "controller/conexion.php";
 
+
+$usuario =  buscarUsuarioId($db, $_SESSION["id"]);
+
+
+
+
+/*
 $array = abrirJson();
 
 foreach ($array as $value) {
@@ -21,7 +30,7 @@ foreach ($array as $value) {
     }
   }
 }
-
+*/
 
 ?>
 
@@ -37,7 +46,7 @@ foreach ($array as $value) {
 </head>
 <body>
   <div class="container">
-  <?php if($_SESSION["id"] = 1):?>
+  <?php if($_SESSION["email"] == "admin@admin.com"):?>
     <?php include_once("partials/headerAdmin.php")?>
   <?php else: ?>
     <?php include_once("partials/header.php")?>
@@ -58,19 +67,22 @@ foreach ($array as $value) {
         <tbody>
           <tr>
             <th scope="row">Nombre:</th>
-            <td><?= $nombre ?></td>
+            <td><?= $usuario["nombre"] ?></td>
           </tr>
           <tr>
             <th scope="row">Apellido:</th>
-            <td><?= $apellido?></td>
+            <td><?= $usuario["apellido"]?></td>
           </tr>
           <tr>
             <th scope="row">Email:</th>
-            <td><?= $email ?></td>
+            <td><?= $usuario["email"]?></td>
           </tr>
         </tbody>
       </table>
-      <button type="button" class="btn btn-outline-info">Editar</button>
+      <form class="form-signin" action="editarUsuario.php" method="GET" enctype="multipart/form-data">
+        <input type="hidden" id="idUsuario" name="idUsuario" class="form-control" value="<?= $usuario["idUsuario"]?>" autofocus>      
+        <button class="btn btn-outline-info" type="submit">Editar</button>
+    </form>
     </div>
   </div>
 </section>

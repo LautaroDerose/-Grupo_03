@@ -22,7 +22,7 @@ if ($_POST) {
 </head>
 <body>
 	<div class="container">
-		<?php if($_SESSION["id"] = 1):?>
+		<?php if($_SESSION["email"] == "admin@admin.com"):?>
 	    <?php include_once("partials/headerAdmin.php")?>
 	  	<?php else: ?>
 	    	<?php include_once("partials/header.php")?>
@@ -44,7 +44,7 @@ if ($_POST) {
            				<label for="inputDescripcion" class="sr-only">Descripcion</label>
             			<input type="text" id="inputDescripcion" name="descripcion" class="form-control" placeholder="descripcion" value="" autofocus>
            			</div>
-           			<button class="btn btn-lg btn-primary btn-block black-background white" type="submit">Registrarse</button>
+           			<button class="btn btn-lg btn-primary btn-block black-background white" type="submit">Agregar Producto</button>
            		</form>
 
            	</div>

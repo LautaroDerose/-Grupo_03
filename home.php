@@ -3,6 +3,7 @@
 
 session_start();
 
+
 if (!empty($_SESSION)) {
 	header('Location: bienvenida.php');
 }
@@ -19,12 +20,7 @@ if (!empty($_SESSION)) {
 </head>
 <body>
 <div class="container">
-
-	 <?php if($_SESSION["id"] = 1):?>
-    <?php include_once("partials/headerAdmin.php")?>
-  <?php else: ?>
     <?php include_once("partials/header.php")?>
-  <?php endif?> 
 	
 	<div class="jumbotron jumbotron-fluid">
   		<div class="container">

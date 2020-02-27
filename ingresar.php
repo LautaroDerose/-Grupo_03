@@ -22,14 +22,15 @@ if ($_POST){
     if(!empty($usuario)){
       if ($usuario["email"] == $_POST["email"]){
           if( password_verify($_POST['pass'], $usuario['password']) ){
-            $_SESSION["id"] =$usuario["id"];
+            $_SESSION["id"] =$usuario["idUsuario"];
             $_SESSION["nombre"] =$usuario["nombre"];
+            $_SESSION["email"] = $usuario["email"];
             if (isset($_POST["recordarme"])) {
               $_SESSION["password"] =$usuario["password"];
               setcookie("recordarme", "true");
               setcookie("email", $usuario["email"]);
             }
-            if ($usuario["email"] = "admin@admin.com") {
+            if ($usuario["email"] == "admin@admin.com") {
               header("Location: configuracion.php");
             }else{
               header("Location: bienvenida.php");

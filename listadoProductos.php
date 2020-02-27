@@ -28,11 +28,11 @@ $productos = obtenerProductos($db);
 </head>
 <body>
   <div class="container">
-    <?php if($_SESSION["id"] = 1):?>
+    <?php if($_SESSION["email"] == "admin@admin.com"):?>
       <?php include_once("partials/headerAdmin.php")?>
       <?php else: ?>
         <?php include_once("partials/header.php")?>
-      <?php endif?> 
+      <?php endif ?> 
 
     </div>
     
@@ -52,10 +52,16 @@ $productos = obtenerProductos($db);
                   <h5 class="card-title"><?php echo "precio: $".$producto["precio"]; ?></h5>
                   <p class="card-text"><?php echo $producto["descripcion"]; ?></p>
                 </div>
+                <?php if($_SESSION["email"] == "admin@admin.com"):?>      
                 <form class="form-signin" action="listadoProductos.php" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" id="idProd" name="idProd" class="form-control" value="<?= $producto["idProducto"]?>" autofocus>             
+                    <input type="hidden" id="idProd" name="idProd" class="form-control" value="<?= $producto["idProducto"]?>" autofocus>      
                     <button class="btn btn-lg btn-primary btn-block black-background white" type="submit">Eliminar</button>
-                </form>  
+                </form>
+                <form class="form-signin" action="editarProducto.php" method="GET" enctype="multipart/form-data">
+                    <input type="hidden" id="idProd" name="idProd" class="form-control" value="<?= $producto["idProducto"]?>" autofocus>      
+                    <button class="btn btn-lg btn-primary btn-block black-background white" type="submit">Editar</button>
+                </form>
+                 <?php endif ?>  
               </div>
           </div>
         <?php }?>
