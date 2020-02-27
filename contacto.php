@@ -13,7 +13,7 @@ session_start();
 </head>
 <body>
   <div class="container">
-  <?php if($_SESSION["email"] == "admin@admin.com"):?>
+  <?php if(!empty($_SESSION) and $_SESSION["email"] == "admin@admin.com"):?>
     <?php include_once("partials/headerAdmin.php")?>
   <?php else: ?>
     <?php include_once("partials/header.php")?>

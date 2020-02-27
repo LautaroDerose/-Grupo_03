@@ -54,12 +54,19 @@ if ($_POST) {
            			</div>
 
 
-           			<div class="form-group">
-           				<label for="inputDescripcion" class="sr-only">Descripcion</label>
-            			<input type="text" id="inputDescripcion" class="form-control mb-4" name="descripcion" placeholder="Descripcion"  value="<?= persistirDato($error, 'descripcion') ?>">
-                <small  class="text-danger"> <?= isset($error['descripcion']) ? $error['descripcion'] : "" ?></small>
-           			</div>
+           		
+                <div class="form-group"> 
+                  <label for="inputDescripcion" class="sr-only">Descripcion</label>
+                  <textarea id="inputDescripcion" name="descripcion" value="<?= persistirDato($error, 'descripcion') ?>" class="md-textarea form-control" placeholder="Descripcion" rows="3" ></textarea>
+                  <small  class="text-danger"> <?= isset($error['descripcion']) ? $error['descripcion'] : "" ?></small>
+               
+                </div>
            			<button class="btn btn-lg btn-primary btn-block black-background white" type="submit">Agregar Producto</button>
+
+
+
+
+
            		</form>
 
            	</div>

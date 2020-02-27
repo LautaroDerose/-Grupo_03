@@ -1,4 +1,6 @@
-<?php 
+<?php
+
+/*CONSULTAS PARA USUARIOS*/
 
 function buscarUsuarioEmail($db, $usuario){
 	$user= $usuario["email"];
@@ -82,6 +84,10 @@ function insertarUsuario($db, $usuario){
 
 	$consulta->execute();
 }
+
+
+
+/*CONSULTAS PARA PRODUCTOS*/
 
 function insertarProducto($db,$producto){
 	$nombre = $producto["nombre"];
@@ -169,6 +175,42 @@ function editarProducto($db, $producto){
 	$consulta->bindValue(':descripcion', $descripcion, PDO::PARAM_STR);
 	$consulta->execute();
 
+
+}
+
+/*CONSULTAS PARA PREGUNTAS*/
+
+function insertarPregunta($db, $pregunta){
+	$titulo = $pregunta["titulo"];
+	$pregunta = $pregunta["pregunta"];
+	
+	
+	$sql= "
+	INSERT INTO preguntas
+	VALUES (null, :titulo, :pregunta)
+	";
+
+	$consulta = $db->prepare($sql);
+	$consulta->bindValue(':pregunta', $pregunta, PDO::PARAM_STR);
+	$consulta->bindValue(':titulo', $titulo, PDO::PARAM_STR);
+
+	$consulta->execute();
+
+}
+
+function obtenerPreguntas($db){
+	$sql = 
+	"SELECT * 
+	FROM preguntas";
+
+	$consulta = $db->prepare($sql);
+	//ejecuto la consulta
+	$consulta->execute();
+
+	//leo los resultados obtenidos
+	$resultado = $consulta->fetchAll(PDO::FETCH_ASSOC);  
+
+	return $resultado;
 
 }
 
