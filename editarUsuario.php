@@ -53,11 +53,13 @@ if (!empty($_GET)) {
       <div class="col-lg-4 col-md-6 col-xs-12 ">
         <h2 class="form-signin-heading">Registro</h2>
         <form class="form-signin" action="editarUsuario.php" method="POST" enctype="multipart/form-data">
-        <input type="hidden" id="idUsuario" name="idUsuario" class="form-control" value="<?= $usuario["idUsuario"]?>" autofocus>  
+        <input type="hidden" id="idUsuario" name="idUsuario" class="form-control" value="<?= $usuario["idUsuario"]?>" autofocus> 
+
+
           <div class="form-group">
             <label for="inputName" class="sr-only">Nombre</label>
             <?php if (!empty($_GET)):  ?>
-            <input type="text" id="inputEmail" name="nombre" class="form-control" placeholder="nombre" value="<?= $usuario["nombre"]?>" autofocus>
+            <input type="text" id="inputName" name="nombre" class="form-control" placeholder="nombre" value="<?= $usuario["nombre"]?>" autofocus>
             <?php else: ?>
 
              <input type="text" id="inputName" class="form-control mb-4" name="nombre" placeholder="Nombre"  value="<?= persistirDato($error, 'nombre') ?>">
@@ -69,7 +71,7 @@ if (!empty($_GET)) {
          <div class="form-group">
           <label for="inputApellido" class="sr-only">Apellido</label>
           <?php if (!empty($_GET)):  ?>
-          <input type="text" id="inputEmail" name="apellido" class="form-control" placeholder="Apellido" value="<?= $usuario["apellido"]?>" autofocus>
+          <input type="text" id="inputApellido" name="apellido" class="form-control" placeholder="Apellido" value="<?= $usuario["apellido"]?>" autofocus>
           <?php else: ?>
             <input type="text" id="inputApellido" class="form-control mb-4" name="apellido" placeholder="Apellido" value="<?= persistirDato($error, 'apellido') ?>" >
             <small  class="text-danger"> <?= isset($error['apellido']) ? $error['apellido'] : "" ?></small>

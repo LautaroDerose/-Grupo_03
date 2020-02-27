@@ -74,4 +74,34 @@ function persistirDato($arrayE, $string) {
 }
 
 
+function validarDatosProducto($datos){
+
+	$errores=[];
+
+	if(isset($datos["nombre"])){
+
+		if (empty($datos["nombre"])) {
+			$errores["nombre"]= "Completa este campo";
+		}elseif(strlen($datos["nombre"]) < 3){
+			$errores["nombre"]= "Se requieren 3 caracteres minimo";
+		}
+	}
+
+	if(isset($datos["descripcion"])){
+
+		if (empty($datos["descripcion"])) {
+			$errores["descripcion"]= "Completa este campo";
+		}elseif(strlen($datos["nombre"]) < 3){
+			$errores["descripcion"]= "Se requieren 3 caracteres minimo";
+		}
+	}
+	if (isset($datos["precio"])){
+		if (empty($datos["precio"])) {
+			$errores["precio"]= "Completa este campo";
+		}	
+	}
+    return $errores;
+}
+
+
 ?>

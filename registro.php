@@ -59,7 +59,7 @@ if ($_POST){
           <div class="form-group">
             <label for="inputName" class="sr-only">Nombre</label>
             <?php if (isset ($_COOKIE["recordarme"]) and isset ($_COOKIE["nombre"])):  ?>
-            <input type="text" id="inputEmail" name="nombre" class="form-control" placeholder="nombre" value="<?= $_COOKIE["nombre"]?>" autofocus>
+            <input type="text" id="inputName" name="nombre" class="form-control" placeholder="nombre" value="<?= $_COOKIE["nombre"]?>" autofocus>
             <?php else: ?>
 
              <input type="text" id="inputName" class="form-control mb-4" name="nombre" placeholder="Nombre"  value="<?= persistirDato($error, 'nombre') ?>">
@@ -71,7 +71,7 @@ if ($_POST){
          <div class="form-group">
           <label for="inputApellido" class="sr-only">Apellido</label>
           <?php if (isset ($_COOKIE["recordarme"]) and isset ($_COOKIE["apellido"])):  ?>
-          <input type="text" id="inputEmail" name="apellido" class="form-control" placeholder="Apellido" value="<?= $_COOKIE["apellido"]?>" autofocus>
+          <input type="text" id="inputApellido" name="apellido" class="form-control" placeholder="Apellido" value="<?= $_COOKIE["apellido"]?>" autofocus>
           <?php else: ?>
             <input type="text" id="inputApellido" class="form-control mb-4" name="apellido" placeholder="Apellido" value="<?= persistirDato($error, 'apellido') ?>" >
             <small  class="text-danger"> <?= isset($error['apellido']) ? $error['apellido'] : "" ?></small>
@@ -95,8 +95,8 @@ if ($_POST){
         </div>
 
         <div class="form-group">
-          <label for="inputPassword" class="sr-only">Validar Contraseña</label>
-          <input type="password" id="inputPassword" class="form-control mb-4" name="rePass" placeholder="Vuelva a escribir la contraseña">
+          <label for="inputRePassword" class="sr-only">Validar Contraseña</label>
+          <input type="password" id="inputRePassword" class="form-control mb-4" name="rePass" placeholder="Vuelva a escribir la contraseña">
           <small  class="text-danger"> <?= isset($error['rePass']) ? $error['rePass'] : "" ?></small>
         </div>
 

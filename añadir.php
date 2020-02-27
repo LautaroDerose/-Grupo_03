@@ -2,14 +2,21 @@
 session_start();
 include_once "controller/consultas.php";
 include_once "controller/conexion.php";
+include_once "controller/validar.php";
 
+$error = "";
 if(empty($_SESSION)){
   header('Location: bienvenida.php');
 }
 
 if ($_POST) {
-	insertarProducto($db,$_POST);
-	header('Location: listadoProductos.php');
+  $error = validarDatosProducto($_POST);
+
+  if (count($error)==0){
+
+	 insertarProducto($db,$_POST);
+	 header('Location: listadoProductos.php');
+  }
 }
 
 ?>
@@ -34,15 +41,23 @@ if ($_POST) {
         		<form class="form-signin" action="añadir.php" method="POST" enctype="multipart/form-data">
 		 			<div class="form-group">
            				<label for="inputNombre" class="sr-only">Nombre</label>
-            			<input type="text" id="inputNombre" name="nombre" class="form-control" placeholder="nombre" value="" autofocus>
+
+                <input type="text" id="inputNombre" class="form-control mb-4" name="nombre" placeholder="Nombre"  value="<?= persistirDato($error, 'nombre') ?>">
+                <small  class="text-danger"> <?= isset($error['nombre']) ? $error['nombre'] : "" ?></small>
+
            			</div>
+
            			<div class="form-group">
            				<label for="inputPrecio" class="sr-only">Precio</label>
-            			<input type="text" id="inputPrecio" name="precio" class="form-control" placeholder="precio" value="" autofocus>
+            			<input type="text" id="inputPrecio" class="form-control mb-4" name="precio" placeholder="Precio"  value="<?= persistirDato($error, 'precio') ?>">
+                <small  class="text-danger"> <?= isset($error['precio']) ? $error['precio'] : "" ?></small>
            			</div>
+
+
            			<div class="form-group">
            				<label for="inputDescripcion" class="sr-only">Descripcion</label>
-            			<input type="text" id="inputDescripcion" name="descripcion" class="form-control" placeholder="descripcion" value="" autofocus>
+            			<input type="text" id="inputDescripcion" class="form-control mb-4" name="descripcion" placeholder="Descripcion"  value="<?= persistirDato($error, 'descripcion') ?>">
+                <small  class="text-danger"> <?= isset($error['descripcion']) ? $error['descripcion'] : "" ?></small>
            			</div>
            			<button class="btn btn-lg btn-primary btn-block black-background white" type="submit">Agregar Producto</button>
            		</form>
