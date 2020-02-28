@@ -1,6 +1,7 @@
 <?php 
 
 session_start();
+require_once "controller/validar.php";
 require_once "controller/consultas.php";
 require_once "controller/conexion.php";
 
@@ -71,11 +72,16 @@ if (!empty($_GET)) {
 								<div class="form-group">
 									<label for="inputDescripcion" class="sr-only">Descripcion</label>
 									<?php if (!empty($_GET)):  ?>
-										<input type="text" id="inputDescripcion" name="descripcion" class="form-control" placeholder="Descripcion" value="<?= $productos["descripcion"]?>" autofocus>
-										<?php else: ?>
+										
 
-											<input type="text" id="inputDescripcion" class="form-control mb-4" name="descripcion" placeholder="descripcion"  value="<?= persistirDato($error, 'descripcion') ?>">
-											<small  class="text-danger"> <?= isset($error['descripcion']) ? $error['descripcion'] : "" ?></small>
+										<textarea id="inputDescripcion" name="descripcion" class="md-textarea form-control" placeholder="Descripcion" rows="3" ><?= $productos["descripcion"]?></textarea>
+
+										<?php else: ?>
+												
+
+											<label for="inputDescripcion" class="sr-only">Descripcion</label>
+                 							 <textarea id="inputDescripcion" name="descripcion" value="<?= persistirDato($error, 'descripcion') ?>" class="md-textarea form-control" placeholder="Descripcion" rows="3" ></textarea>
+                  							<small  class="text-danger"> <?= isset($error['descripcion']) ? $error['descripcion'] : "" ?></small>
 										</div>
 									<?php endif ?>
 

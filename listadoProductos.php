@@ -49,7 +49,7 @@ $productos = obtenerProductos($db);
               <div class="card border-primary mb-3" style="max-width: 18rem;">
                 <div class="card-header"><?php echo $producto["nombre"]; ?></div>
                 <div class="card-body text-primary">
-                  <h5 class="card-title"><?php echo "precio: $".$producto["precio"]; ?></h5>
+                  <h5 class="card-title"><?php echo "Precio: $".$producto["precio"]; ?></h5>
                   <p class="card-text"><?php echo $producto["descripcion"]; ?></p>
                 </div>
                 <?php if($_SESSION["email"] == "admin@admin.com"):?>      
