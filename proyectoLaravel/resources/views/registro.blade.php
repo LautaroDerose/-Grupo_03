@@ -1,0 +1,72 @@
+@extends("layout")
+
+@section("links")
+<link rel="stylesheet" href="css/registro.css">
+@endsection
+
+@section("titulo")
+Registro
+
+@endsection
+
+
+@section("titulo principal")
+Registro
+
+@endsection
+
+
+@section("contenido")
+<div class ="row justify-content-md-center mt-4">
+      <div class="col-lg-4 col-md-6 col-xs-12 ">
+        <form class="form-signin" action="registro.php" method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="inputName" class="sr-only">Nombre</label>
+
+
+             <input type="text" id="inputName" class="form-control mb-4" name="nombre" placeholder="Nombre"  value="">
+             <small  class="text-danger"> </small>
+           </div>
+
+
+         <div class="form-group">
+          <label for="inputApellido" class="sr-only">Apellido</label>
+            <input type="text" id="inputApellido" class="form-control mb-4" name="apellido" placeholder="Apellido" value="" >
+            <small  class="text-danger"> </small>
+          </div>
+
+        <div class="form-group">
+          <label for="inputEmail" class="sr-only">Email</label>
+
+             <input type="email" id="inputEmail" class="form-control mb-4" name="email" placeholder="Email" value="" autofocus>
+             <small  class="text-danger"> </small>
+           </div>
+
+         <div class="form-group">
+          <label for="inputPassword" class="sr-only">Contraseña</label>
+          <input type="password" id="inputPassword" class="form-control mb-4" name="pass" placeholder="Contraseña" >
+          <small  class="text-danger"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="inputRePassword" class="sr-only">Validar Contraseña</label>
+          <input type="password" id="inputRePassword" class="form-control mb-4" name="rePass" placeholder="Vuelva a escribir la contraseña">
+          <small  class="text-danger"> </small>
+        </div>
+
+        <div class='container mb-4'>
+          <label for="archivo">Foto de perfil</label>
+          <input type="file" name="archivo">
+        </div>
+        <div class="checkbox">
+          <br>
+          <label>
+            <input type="checkbox" name="recordarme" value=""> Recordarme
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block black-background white" type="submit">Registrarse</button>
+      </form>
+    </div>
+  </div>
+
+@endsection
