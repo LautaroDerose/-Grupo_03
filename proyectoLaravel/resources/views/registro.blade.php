@@ -19,13 +19,14 @@ Registro
 @section("contenido")
 <div class ="row justify-content-md-center mt-4">
       <div class="col-lg-4 col-md-6 col-xs-12 ">
-        <form class="form-signin" action="registro.php" method="POST" enctype="multipart/form-data">
+        <form class="form-signin" action="{{url('registro/usuario')}}" method="POST" enctype="multipart/form-data">
+          @csrf
           <div class="form-group">
             <label for="inputName" class="sr-only">Nombre</label>
 
 
-             <input type="text" id="inputName" class="form-control mb-4" name="nombre" placeholder="Nombre Completo"  value="">
-             <small  class="text-danger"> </small>
+             <input type="text" id="inputName" class="form-control mb-4" name="nombre" placeholder="Nombre"  value="">
+             <small  class="text-danger"></small>
            </div>
 
 

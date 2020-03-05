@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/productos', 'productosController@listar');
+Route::get('/productos', 'ProductoController@listar');
 Route::Get('/registro', function(){
 	return view('registro');
 });
@@ -38,3 +38,7 @@ Route::get('/preguntas', function(){
 Route::get('/contacto', function(){
 	return view('contacto');
 });
+
+Route::post('/registro/usuario', 'UsuarioController@validar');
+Route::post('/registro/producto', 'ProductoController@validar');
+
