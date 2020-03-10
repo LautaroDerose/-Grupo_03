@@ -32,6 +32,12 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ url('/registro') }}">Registro</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url('producto/agregar') }}">Añadir producto</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url('productos') }}">Nuestros Productos</a>
+          </li>
           
         </ul>
         <div>

@@ -25,28 +25,36 @@ Registro
             <label for="inputName" class="sr-only">Nombre</label>
 
 
-             <input type="text" id="inputName" class="form-control mb-4" name="nombre" placeholder="Nombre"  value="">
-             <small  class="text-danger"></small>
+             <input type="text" id="inputName" class="form-control mb-4" name="nombre" placeholder="Nombre"  value="{{ old('nombre') }}">
+             @if ($errors->has("nombre"))
+             <small  class="text-danger">{{ $errors->first("nombre") }}</small>
+             @endif
            </div>
 
 
          <div class="form-group">
           <label for="inputApellido" class="sr-only">Apellido</label>
-            <input type="text" id="inputApellido" class="form-control mb-4" name="apellido" placeholder="Apellido" value="" >
-            <small  class="text-danger"> </small>
+            <input type="text" id="inputApellido" class="form-control mb-4" name="apellido" placeholder="Apellido" value="{{ old('apellido') }}" >
+            @if($errors->has("apellido"))
+            <small  class="text-danger">{{ $errors->first("apellido") }} </small>
+            @endif
           </div>
 
         <div class="form-group">
           <label for="inputEmail" class="sr-only">Email</label>
 
-             <input type="email" id="inputEmail" class="form-control mb-4" name="email" placeholder="Email" value="" autofocus>
-             <small  class="text-danger"> </small>
+             <input type="email" id="inputEmail" class="form-control mb-4" name="email" placeholder="Email" value="{{ old('email') }}" autofocus>
+             @if ($errors->has("email"))
+             <small  class="text-danger" >{{ $errors->first("email") }} </small>
+             @endif
            </div>
 
          <div class="form-group">
           <label for="inputPassword" class="sr-only">Contraseña</label>
-          <input type="password" id="inputPassword" class="form-control mb-4" name="pass" placeholder="Contraseña" >
-          <small  class="text-danger"></small>
+          <input type="password" id="inputPassword" class="form-control mb-4" name="password" placeholder="Contraseña" >
+          @if ($errors->has("password"))
+          <small  class="text-danger">{{ $errors->first("password") }}</small>
+          @endif
         </div>
 
         <div class="form-group">

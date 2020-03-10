@@ -23,8 +23,45 @@ class ProductoController extends Controller
     	return view('productos', compact('productos'));
     }
 
-    public function validar(Request $request){
-    	//$request->input("");
+    public function guardar(Request $request){
+
+    	$errores = [
+    		"nombre" => 'required|string|max:60|min:3',
+    		"precio" => 'required|numeric',
+    		"descripcion" => 'string|max:255|',
+    	];
+
+    	$mensajes = [
+    		'required' => "El  :attribute es necesario",
+    		'max' => "El  :attribute tiene un maximo de :max caracteres ",
+    		'min' => "El  :attribute debe ser como minimo de :min caracteres",
+    		'numeric' => "El :attribute debe ser numerico",
+    		'string' => "El :attribute debe ser solo letras"
+    	];
+
+    	$this->validate($request,$errores,$mensajes);
+    	 
+    	$producto = new Producto();
+    	$producto->nombre = $request["nombre"];
+    	$producto->precio = $request["precio"];
+    	$producto->descripcion = $request["descripcion"];
+    	$producto->valoracion = 5;
+
+    	$producto->save();
+
+    	return redirect("/productos");
+
+
+
+    }
+
+
+     public function eliminar(Request $request){
+    	$producto = Producto::find($request["id"]);
+
+    	$producto->delete();
+
+    	return redirect("/productos");
 
     }
 }

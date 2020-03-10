@@ -39,6 +39,14 @@ Route::get('/contacto', function(){
 	return view('contacto');
 });
 
-Route::post('/registro/usuario', 'UsuarioController@validar');
+Route::post('/registro/usuario', 'UsuarioController@guardar');
 Route::post('/registro/producto', 'ProductoController@validar');
 
+
+Route::Get('producto/agregar', function(){
+	return view('productoAgregar');
+});
+
+Route::post('/producto/agregar','ProductoController@guardar');
+
+Route::post('/producto/eliminar','ProductoController@eliminar');
