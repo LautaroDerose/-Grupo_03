@@ -19,12 +19,12 @@ Route::Get('/registro', function(){
 	return view('registro');
 });
 
-Route::get('/home', function(){
-	return view('home');
+Route::get('/inicio', function(){
+	return view('inicio');
 });
 
-Route::get('/login', function(){
-	return view('login');
+Route::get('/inicio/sesion', function(){
+	return view('inicioSesion');
 });
 
 Route::get('/carrito', function(){
@@ -50,3 +50,8 @@ Route::Get('producto/agregar', function(){
 Route::post('/producto/agregar','ProductoController@guardar');
 
 Route::post('/producto/eliminar','ProductoController@eliminar');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+

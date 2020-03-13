@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/inicio';
 
     /**
      * Create a new controller instance.
@@ -49,10 +49,20 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'name' => ['required', 'string', 'max:45' ,'min:3'],
+            'email' => ['required', 'string', 'email', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'apellido' => ['required', 'string', 'max:45' , 'min:3'],
+        ],[
+            'required' => "El  :attribute es necesario",
+            'max' => "El  :attribute tiene un maximo de :max caracteres ",
+            'min' => "El  :attribute debe ser como minimo de :min caracteres",
+            'unique' => "El :attribute ya existe, por favor escribe otro",
+            'string' => "El :attribute debe ser solo letras"
         ]);
+
+
+
     }
 
     /**
@@ -67,6 +77,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'apellido' => $data['apellido'],
         ]);
     }
 }

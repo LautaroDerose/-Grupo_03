@@ -9,69 +9,110 @@
 <body>
   <div class="class-container">
     <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-      <a class="navbar-brand" href="{{ url('/home') }}">E-commerce</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+        <a class="navbar-brand" href="{{ url('/inicio') }}">E-commerce</a>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="{{ url('/home') }}">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url('/preguntas')}}">F.A.Q.</a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ url('/contacto') }}" class="nav-link">Contacto</a>
-          </li>
-          <li class="nav-item">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{{ url('/inicio') }}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url('/preguntas')}}">F.A.Q.</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url('/contacto') }}" class="nav-link">Contacto</a>
+            </li>
+            @auth
+
+            
+            {{--<li class="nav-item">
             <a class="nav-link" href="{{ url('/login') }}">Login</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ url('/registro') }}">Registro</a>
-          </li>
+          </li>  --}}
+          
           <li class="nav-item">
             <a class="nav-link" href="{{ url('producto/agregar') }}">Añadir producto</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ url('productos') }}">Nuestros Productos</a>
           </li>
+          @endauth
+          
           
         </ul>
+        <ul class="navbar-nav ml-auto">
+          <!-- Authentication Links -->
+          @guest
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url('inicio/sesion') }}">{{ __('Login') }}</a>
+          </li>
+          @if (Route::has('register'))
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url('/registro') }}">{{ __('Registro') }}</a>
+          </li>
+          @endif
+          @else
+          <li class="nav-item dropdown">
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+              {{ Auth::user()->name }} <span class="caret"></span>
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{ route('logout') }}"
+              onclick="event.preventDefault();
+              document.getElementById('logout-form').submit();">
+              {{ __('Logout') }}
+            </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+            </form>
+          </div>
+
+        </li>
         <div>
           <a class="nav-link" href="#">Mostrar usuario</a>
         </div>
         <div>
           <a class="nav-link" href="{{ url('/carrito') }}"><img src="shopping-cart.svg" width="25px" height="25px" alt="carrito-icon"></a>
         </div>
-      </div>
-    </nav>
-  </header>
-   <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-        <h1 class="display-4">@yield("titulo principal")</h1>
-      </div>
-  <main>
-
-    <div class="container">
+        @endguest
+      </ul>
       
-      @yield("contenido")
-
     </div>
-  </main>
+  </nav>
+</header>
+<div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  <h1 class="display-4">@yield("titulo principal")</h1>
+</div>
+<main>
+
+  <div class="container">
+
+    @yield("contenido")
 
   </div>
+</main>
+
+</div>
 
 
-  <footer class="page-footer font-small blue pt-4">
+<footer class="page-footer font-small blue pt-4">
   <div class="footer-copyright text-center py-3">© 2019 Copyright:
     <a href="#"> Grupo3</a>
   </div>
 </footer>
-  
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>

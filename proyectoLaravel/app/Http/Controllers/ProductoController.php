@@ -40,12 +40,16 @@ class ProductoController extends Controller
     	];
 
     	$this->validate($request,$errores,$mensajes);
+
+        $ruta = $request->file("archivo")->store("public/fotoProducto");
+        $nombre = basename($ruta);
     	 
     	$producto = new Producto();
     	$producto->nombre = $request["nombre"];
     	$producto->precio = $request["precio"];
     	$producto->descripcion = $request["descripcion"];
     	$producto->valoracion = 5;
+        $producto->foto = $nombre;
 
     	$producto->save();
 

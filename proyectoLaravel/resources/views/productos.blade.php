@@ -12,21 +12,22 @@
       @section("contenido")
       <div class="row">
         @forelse ($productos as $producto ) 
-        <div class="col-md-4">
-
-          <div class="card border-primary mb-3" style="max-width: 18rem;">
-            <div class="card-header">{{$producto["nombre"]}}</div>
-            <div class="card-body text-primary">
-              <h5 class="card-title"> Precio: ${{$producto["precio"]}}</h5>
+        <div class="col-md-4 mb-4">
+          <div class="card" style="width: 18rem;">
+            <img src="/storage/fotoProducto/{{ $producto["foto"] }}" class="card-img-top" alt="image-product">
+            <div class="card-body">
+              <div class="card-header">{{$producto["nombre"]}}</div>
+              <h5 class="card-title">Precio: ${{$producto["precio"]}}</h5>
               <p class="card-text">{{$producto["descripcion"]}}</p>
-            </div>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
               <form class="form-signin" action="/producto/eliminar" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                   <input type="hidden" id="inputName" class="form-control mb-4" name="id"  value="{{ $producto["idProducto"]}}">
-                  <button class="btn btn-lg btn-danger btn-block black-background white" type="submit">Eliminar</button>
+                  <button class="btn btn-danger mt-4" type="submit">Eliminar</button>
                 </div>
               </form>
+            </div>
           </div>
 
         </div>
