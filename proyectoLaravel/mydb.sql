@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-03-2020 a las 01:11:10
+-- Tiempo de generación: 13-03-2020 a las 18:19:50
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.1.32
 
@@ -65,7 +65,8 @@ CREATE TABLE `migrations` (
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_resets_table', 1);
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2020_03_13_164824_admin', 2);
 
 -- --------------------------------------------------------
 
@@ -144,15 +145,17 @@ CREATE TABLE `users` (
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `is_admin` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `apellido`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'juan', 'juan@mannino.com', 'mannino', NULL, '$2y$10$8sivOHr4zW1q05rsUHaYEe9WDdSFm4NZozsgk8L3AVj7iVPAS3H5y', NULL, '2020-03-13 01:15:44', '2020-03-13 01:15:44');
+INSERT INTO `users` (`id`, `name`, `email`, `apellido`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `is_admin`) VALUES
+(1, 'juan', 'juan@mannino.com', 'mannino', NULL, '$2y$10$8sivOHr4zW1q05rsUHaYEe9WDdSFm4NZozsgk8L3AVj7iVPAS3H5y', NULL, '2020-03-13 01:15:44', '2020-03-13 01:15:44', 0),
+(2, 'admin', 'admin@admin.com', 'admin', NULL, '$2y$10$EPuS69JKAZG7FakeDarTG.88sVN9x3bn6guobi7Cgj/ZRwnKRFEoy', NULL, '2020-03-13 20:08:04', '2020-03-13 20:08:04', 1);
 
 -- --------------------------------------------------------
 
@@ -251,7 +254,7 @@ ALTER TABLE `contactos`
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `preguntas`
@@ -269,7 +272,7 @@ ALTER TABLE `productos`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`

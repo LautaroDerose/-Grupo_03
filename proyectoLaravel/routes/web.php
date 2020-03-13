@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/productos', 'ProductoController@listar');
+Route::get('/productos', 'ProductoController@listar')->middleware('auth');
 Route::Get('/registro', function(){
 	return view('registro');
 });
@@ -40,16 +40,17 @@ Route::get('/contacto', function(){
 });
 
 Route::post('/registro/usuario', 'UsuarioController@guardar');
-Route::post('/registro/producto', 'ProductoController@validar');
 
 
-Route::Get('producto/agregar', function(){
-	return view('productoAgregar');
+#Agrupo rutas para que solo puedan ser utilizadas por el administrador
+
+Route::group(['middleware' => 'admin'], function () {
+    Route::Get('producto/agregar', "ProductoController@agregar");
+	Route::post('/producto/agregar','ProductoController@guardar');
+	Route::post('/producto/eliminar','ProductoController@eliminar');
 });
 
-Route::post('/producto/agregar','ProductoController@guardar');
 
-Route::post('/producto/eliminar','ProductoController@eliminar');
 
 Auth::routes();
 

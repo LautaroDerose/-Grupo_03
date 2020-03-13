@@ -68,4 +68,8 @@ class ProductoController extends Controller
     	return redirect("/productos");
 
     }
+
+    public function agregar(){
+        return view("productoAgregar");
+    }
 }

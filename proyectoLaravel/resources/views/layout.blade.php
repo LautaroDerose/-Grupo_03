@@ -38,9 +38,13 @@
             <a class="nav-link" href="{{ url('/registro') }}">Registro</a>
           </li>  --}}
           
+           @if (Auth::user()->is_admin)
+
           <li class="nav-item">
             <a class="nav-link" href="{{ url('producto/agregar') }}">Añadir producto</a>
           </li>
+          @endif
+          
           <li class="nav-item">
             <a class="nav-link" href="{{ url('productos') }}">Nuestros Productos</a>
           </li>
@@ -52,11 +56,11 @@
           <!-- Authentication Links -->
           @guest
           <li class="nav-item">
-            <a class="nav-link" href="{{ url('inicio/sesion') }}">{{ __('Login') }}</a>
+            <a class="nav-link" href="{{ url('login') }}">{{ __('Login') }}</a>
           </li>
           @if (Route::has('register'))
           <li class="nav-item">
-            <a class="nav-link" href="{{ url('/registro') }}">{{ __('Registro') }}</a>
+            <a class="nav-link" href="{{ url('/register') }}">{{ __('Registro') }}</a>
           </li>
           @endif
           @else

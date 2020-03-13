@@ -19,7 +19,7 @@
               <div class="card-header">{{$producto["nombre"]}}</div>
               <h5 class="card-title">Precio: ${{$producto["precio"]}}</h5>
               <p class="card-text">{{$producto["descripcion"]}}</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <a href="#" class="btn btn-primary">Modificar</a>
               <form class="form-signin" action="/producto/eliminar" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
