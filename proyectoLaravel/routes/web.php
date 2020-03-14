@@ -14,7 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/productos', 'ProductoController@listar')->middleware('auth');
+
+
 Route::Get('/registro', function(){
 	return view('registro');
 });
@@ -39,20 +40,39 @@ Route::get('/contacto', function(){
 	return view('contacto');
 });
 
+#------------------------USUARIOS------------------------
+
 Route::post('/registro/usuario', 'UsuarioController@guardar');
+Route::get('usuario/perfil', function(){
+	return view('usuarioPerfil');
+})->middleware('auth');
+Route::get('usuario/perfil/editar', function(){
+	return view('usuarioEditar');
+})->middleware('auth');
+
+Route::post('usuario/perfil/editar', 'UsuarioController@actualizar')->middleware('auth');
 
 
+#-----------------PRODUCTOS----------------------------------
 #Agrupo rutas para que solo puedan ser utilizadas por el administrador
 
 Route::group(['middleware' => 'admin'], function () {
     Route::Get('producto/agregar', "ProductoController@agregar");
 	Route::post('/producto/agregar','ProductoController@guardar');
 	Route::post('/producto/eliminar','ProductoController@eliminar');
+	Route::post('/producto/actualizar' , 'ProductoController@actualizar');
+	Route::get('/producto/actualizar/{id}', 'ProductoController@actualizarForm');
 });
 
+Route::get('/productos', 'ProductoController@listar')->middleware('auth');
+Route::post('/productos/ordenar', 'ProductoController@ordenarProductos')->middleware('auth');
 
+#--------------------------------------------------
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
 

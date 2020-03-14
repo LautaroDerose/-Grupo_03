@@ -83,7 +83,7 @@
 
         </li>
         <div>
-          <a class="nav-link" href="#">Mostrar usuario</a>
+          <a class="nav-link" href="{{ url('usuario/perfil') }}">Mostrar usuario</a>
         </div>
         <div>
           <a class="nav-link" href="{{ url('/carrito') }}"><img src="shopping-cart.svg" width="25px" height="25px" alt="carrito-icon"></a>
