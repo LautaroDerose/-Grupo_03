@@ -14,9 +14,11 @@
 
         
       @section("contenido")
+    
+      <div class="float-left mr-4">
       <form class="form-signin" action="{{url('productos/ordenar')}}" method="POST" enctype="multipart/form-data">
         @csrf
-        <div class="float-left mr-4">
+        
           <h4>Ordenar por</h4>
           <div class="input-group mb-3">
             <select class="custom-select" id="inputGroupSelect01" name="order">
@@ -27,8 +29,20 @@
             </select>
           </div>
           <button class="btn btn-primary" type="submit">Seleccionar</button>
-        </div>
       </form>
+
+      <div class="float-left mr-4 mt-4">
+          <form class="form-signin " action="{{ url('productos/buscar') }}" method="POST">
+            @csrf
+        <div class="input-group mb-2">
+          <input class="form-control mr-sm-2" type="search" placeholder="Buscar por nombre" id="campo" name="campo" aria-label="Search">
+        </div>
+          <button class="btn btn-outline-success" type="submit">Buscar Producto</button>
+        </form>
+      </div>
+          
+    </div>
+
       
       <div class="row">
         @forelse ($productos as $producto ) 
@@ -43,7 +57,7 @@
               <p class="card-text">{{$producto["descripcion"]}}</p>
 
 
-
+              @if ( Auth::user()->is_admin ) 
               <a href="/producto/actualizar/{{ $producto['idProducto']}}" class="btn btn-primary">Modificar</a>
 
 
@@ -54,6 +68,10 @@
                   <button class="btn btn-danger mt-4" type="submit">Eliminar</button>
                 </div>
               </form>
+              @else
+                <a href="#" class="btn btn-primary">Comprar</a>
+              @endif
+
             </div>
           </div>
 

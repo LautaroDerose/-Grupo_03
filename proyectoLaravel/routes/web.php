@@ -66,6 +66,7 @@ Route::group(['middleware' => 'admin'], function () {
 
 Route::get('/productos', 'ProductoController@listar')->middleware('auth');
 Route::post('/productos/ordenar', 'ProductoController@ordenarProductos')->middleware('auth');
+Route::post('productos/buscar','ProductoController@buscarProductos')->middleware('auth');
 
 #--------------------------------------------------
 

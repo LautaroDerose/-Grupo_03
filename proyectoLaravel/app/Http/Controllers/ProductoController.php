@@ -142,4 +142,11 @@ class ProductoController extends Controller
 
     }
 
+    public function buscarProductos(Request $request){
+        $nombre = $request["campo"];
+        $productos = Producto::where('nombre', 'like', '%' . $nombre . '%')->get();
+
+        return view('productos', compact('productos'));
+    }
+
 }
