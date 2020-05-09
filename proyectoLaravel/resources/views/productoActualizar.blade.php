@@ -39,6 +39,13 @@ Agrergar Porducto
        <small  class="text-danger"> {{ $errors->first("precio") }}</small>
        @endif	
      </div>
+     <div class="form-group">
+       <label for="inputPrecio" class="sr-only">Stock</label>
+       <input type="text" id="inputStock" class="form-control mb-4" name="stock" placeholder="Stock"  value="{{ old("stock") }}">
+       @if ($errors->has("stock"))
+       <small  class="text-danger"> {{ $errors->first("stock") }}</small>
+       @endif 
+     </div>
 
 
 

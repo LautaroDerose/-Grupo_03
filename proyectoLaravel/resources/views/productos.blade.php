@@ -1,7 +1,7 @@
 @extends("layout")
 
 @section("links")
-<link rel="stylesheet" href="css/image.css">
+<link rel="stylesheet" href="{{asset('css/image.css')}}">
 @endsection
 
   @section("titulo")
@@ -31,7 +31,12 @@
           <button class="btn btn-primary" type="submit">Seleccionar</button>
       </form>
 
-      <div class="float-left mr-4 mt-4">
+      <h2>Categorias</h2>
+      @foreach($categorias as $categoria)
+      <a class="dropdown-item" href="{{url("categoria/$categoria->id") }}">{{$categoria->nombre}}</a>
+      @endforeach
+
+      <div class="float-left mr-2 mt-4">
           <form class="form-signin " action="{{ url('productos/buscar') }}" method="POST">
             @csrf
         <div class="input-group mb-2">
@@ -39,22 +44,27 @@
         </div>
           <button class="btn btn-outline-success" type="submit">Buscar Producto</button>
         </form>
-      </div>
-          
+      </div>    
     </div>
+
+    
 
       
       <div class="row">
         @forelse ($productos as $producto ) 
-        <div class="col-md-4 mb-4">
-          <div class="card" style="width: 18rem;">
-            <img src="/storage/fotoProducto/{{ $producto["foto"] }}" class="" alt="image-product">
+          <div class="card col-xs col-sm-11 col-md-10 col-lg-3 p-0 mr-1 mb-1 " style="width: 17rem;">
+            @if($producto["foto"] != null)
 
-
+            <img src="{{asset('/storage/fotoProducto/$producto->foto')}}" class="" alt="image-product">
+            @else
+              <img src="{{asset('unnamed.png')}}" class="" alt="image-product">
+            @endif
             <div class="card-body">
-              <div class="card-header">{{$producto["nombre"]}}</div>
+              <div class="card-header">
+                <a href="{{url("producto/detalle/$producto->idProducto") }}">{{$producto["nombre"]}}</a></div>
               <h5 class="card-title">Precio: ${{$producto["precio"]}}</h5>
-              <p class="card-text">{{$producto["descripcion"]}}</p>
+
+              
 
 
               @if ( Auth::user()->is_admin ) 
@@ -69,13 +79,18 @@
                 </div>
               </form>
               @else
+                @if($producto->stock > 0)
+                <p class="card-text bg-success ">En Stock</p>
                 <a href="#" class="btn btn-primary">Comprar</a>
+                @else
+                <p class="card-text bg-danger ">Sin Stock</p>
+                @endif
+                
               @endif
 
             </div>
           </div>
 
-        </div>
 
         @empty
         <p>No hay productos</p>
@@ -83,6 +98,7 @@
 
       
       </div>
+
       
     @endsection
 

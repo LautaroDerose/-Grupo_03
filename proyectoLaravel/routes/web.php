@@ -11,16 +11,18 @@
 |
 */
 
+/*
 Route::get('/', function () {
     return view('welcome');
 });
+*/
 
 
 Route::Get('/registro', function(){
 	return view('registro');
 });
 
-Route::get('/inicio', function(){
+Route::get('/', function(){
 	return view('inicio');
 });
 
@@ -62,6 +64,9 @@ Route::group(['middleware' => 'admin'], function () {
 	Route::post('/producto/eliminar','ProductoController@eliminar');
 	Route::post('/producto/actualizar' , 'ProductoController@actualizar');
 	Route::get('/producto/actualizar/{id}', 'ProductoController@actualizarForm');
+	Route::post('/categoria/agregar', 'CategoriaController@agregar');
+	Route::get('/categorias', 'CategoriaController@listar');
+	Route::post('/categoria/eliminar','CategoriaController@eliminar');
 });
 
 Route::get('/productos', 'ProductoController@listar')->middleware('auth');
@@ -73,6 +78,15 @@ Route::post('productos/buscar','ProductoController@buscarProductos')->middleware
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/producto/detalle/{id}', 'ProductoController@detalleProducto');
+
+Route::get('/categoria/agregar', function(){
+	return view('categoriaAgregar');
+});
+
+
+Route::get('/categoria/{id}', 'ProductoController@categoriaShow');
 
 
 

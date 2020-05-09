@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddUserFoto extends Migration
+class CreateCategoriasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class AddUserFoto extends Migration
      */
     public function up()
     {
-        Schema::table('users', function ( Blueprint $table) {
-            $table->string('foto');
+        Schema::create('categorias', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('nombre');
+            $table->timestamps();
         });
+      
     }
 
     /**
@@ -25,9 +28,7 @@ class AddUserFoto extends Migration
      */
     public function down()
     {
-         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('is_admin');
-        }
-    );
+        Schema::dropIfExists('categorias');
+       
     }
 }

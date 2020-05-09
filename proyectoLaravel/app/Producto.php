@@ -8,6 +8,10 @@ class Producto extends Model
 {
     public $table = "productos";
     public $primaryKey = "idProducto";
-    public $timestamps = false;
+    public $timestamps = true;
     public $guarded = [];
+
+    public function categoria(){
+    	return $this->belongsTo("App\Categoria", "categoria_id");
+    }
 }
