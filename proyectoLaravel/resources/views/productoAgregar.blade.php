@@ -27,7 +27,7 @@ Agrergar Porducto
        <input type="text" id="inputNombre" class="form-control mb-4" name="nombre" placeholder="Nombre"  value="{{ old("nombre") }}">
        @if ($errors->has("nombre"))
        <small  class="text-danger">{{ $errors->first("nombre") }} </small>
-       @endif	
+       @endif
      </div>
 
      <div class="form-group">
@@ -35,7 +35,7 @@ Agrergar Porducto
        <input type="text" id="inputPrecio" class="form-control mb-4" name="precio" placeholder="Precio"  value="{{ old("precio") }}">
        @if ($errors->has("precio"))
        <small  class="text-danger"> {{ $errors->first("precio") }}</small>
-       @endif	
+       @endif
      </div>
 
      <div class="form-group">
@@ -48,7 +48,7 @@ Agrergar Porducto
 
 
 
-     <div class="form-group"> 
+     <div class="form-group">
       <label for="inputDescripcion" class="sr-only">Descripcion</label>
       <textarea id="inputDescripcion" name="descripcion" value="" class="md-textarea form-control" placeholder="Descripcion" rows="3" ></textarea>
       <small  class="text-danger"> </small>
@@ -74,7 +74,7 @@ Agrergar Porducto
   </form>
 
 </div>
-</div>   		
+</div>
 
 
 @endsection

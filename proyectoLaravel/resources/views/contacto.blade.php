@@ -9,8 +9,9 @@ Contacto
 
 @section("contenido")
 
-<form id="contact" action="" method="post">
-      <h3>Contactenos</h3>
+<form id="contact" action="/contacto/agregar" method="post">  </form>
+	@csrf
+    {{--  <h3>Contactenos</h3>
       <fieldset>
         <input placeholder="Nombre" type="text" tabindex="1" required autofocus>
       </fieldset>
@@ -27,6 +28,6 @@ Contacto
         <button name="submit" type="submit" id="contact-submit" class="btn btn-lg btn-primary btn-block black-background white" data-submit="submit">Enviar</button>
       </fieldset>
     </form>
-
+--}}
 
 @endsection

@@ -34,13 +34,31 @@ Route::get('/carrito', function(){
 	return view('carrito');
 });
 
-Route::get('/preguntas', function(){
-	return view('preguntas');
-});
+
+
+
+#------------------------CONTACTO-----------------------
+
 
 Route::get('/contacto', function(){
 	return view('contacto');
 });
+Route::Get('/contacto', "ContactoController@agregar");
+Route::post('/contacto/agregar','ContactoController@guardar');
+
+#------------------------F.A.Q.-----------------------
+
+Route::get('/preguntas', function(){
+	return view('preguntas');
+});
+Route::Get('/preguntas', "FaqController@agregar");
+Route::post('/preguntas/agregar','FaqController@guardar');
+
+/*Route::get('/preguntas/responder','FaqController@responder');//uso de middleware para admin
+Route::post('/preguntas/guardarRespuesta','FaqController@guardarRespuesta');//uso de middleware para admin
+*/
+
+
 
 #------------------------USUARIOS------------------------
 
@@ -79,6 +97,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
 Route::get('/producto/detalle/{id}', 'ProductoController@detalleProducto');
 
 Route::get('/categoria/agregar', function(){
@@ -87,7 +106,4 @@ Route::get('/categoria/agregar', function(){
 
 
 Route::get('/categoria/{id}', 'ProductoController@categoriaShow');
-
-
-
 

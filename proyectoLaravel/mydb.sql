@@ -1,3 +1,4 @@
+
 -- phpMyAdmin SQL Dump
 -- version 4.9.1
 -- https://www.phpmyadmin.net/
@@ -42,6 +43,7 @@ CREATE TABLE `carrito` (
 
 CREATE TABLE `contactos` (
   `idContacto` int(11) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `celular` varchar(20) NOT NULL,
   `mensaje` text NOT NULL
