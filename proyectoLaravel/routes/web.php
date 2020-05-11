@@ -48,9 +48,9 @@ Route::post('/contacto/agregar','ContactoController@guardar');
 
 #------------------------F.A.Q.-----------------------
 
-Route::get('/preguntas', function(){
-	return view('preguntas');
-});
+ // Route::get('/preguntas', function(){
+ // 	return view('preguntas');
+ // });
 Route::Get('/preguntas', "FaqController@agregar");
 Route::post('/preguntas/agregar','FaqController@guardar');
 
@@ -87,7 +87,7 @@ Route::group(['middleware' => 'admin'], function () {
 	Route::post('/categoria/eliminar','CategoriaController@eliminar');
 });
 
-Route::get('/productos', 'ProductoController@listar')->middleware('auth');
+Route::get('/productos', 'ProductoController@listar');
 Route::post('/productos/ordenar', 'ProductoController@ordenarProductos')->middleware('auth');
 Route::post('productos/buscar','ProductoController@buscarProductos')->middleware('auth');
 

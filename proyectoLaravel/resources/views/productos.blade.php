@@ -67,7 +67,10 @@
               
 
 
-              @if ( Auth::user()->is_admin ) 
+              @if ( Auth::user() and Auth::user()->is_admin ) 
+              
+              <p>Hay stock de {{$producto->stock}}</p>
+               
               <a href="/producto/actualizar/{{ $producto['idProducto']}}" class="btn btn-primary">Modificar</a>
 
 
@@ -81,6 +84,7 @@
               @else
                 @if($producto->stock > 0)
                 <p class="card-text bg-success ">En Stock</p>
+
                 <a href="#" class="btn btn-primary">Comprar</a>
                 @else
                 <p class="card-text bg-danger ">Sin Stock</p>

@@ -23,6 +23,10 @@
             <li class="nav-item active">
               <a class="nav-link" href="{{ url('/') }}">Home <span class="sr-only">(current)</span></a>
             </li>
+            <li class="nav-item">
+            <a class="nav-link" href="{{ url('productos') }}">Nuestros Productos</a>
+          </li>
+
             @auth
            @if (Auth::user()->is_admin)
          
@@ -34,9 +38,7 @@
           </li>
           @endif
           
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url('productos') }}">Nuestros Productos</a>
-          </li>
+          
 
           @endauth
           
