@@ -32,7 +32,7 @@ Route::get('/inicio/sesion', function(){
 
 Route::get('/carrito', function(){
 	return view('carrito');
-});
+})->middleware('auth');
 
 
 
@@ -88,16 +88,8 @@ Route::group(['middleware' => 'admin'], function () {
 });
 
 Route::get('/productos', 'ProductoController@listar');
-Route::post('/productos/ordenar', 'ProductoController@ordenarProductos')->middleware('auth');
-Route::post('productos/buscar','ProductoController@buscarProductos')->middleware('auth');
-
-#--------------------------------------------------
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-
+Route::post('/productos/ordenar', 'ProductoController@ordenarProductos');
+Route::post('productos/buscar','ProductoController@buscarProductos');
 Route::get('/producto/detalle/{id}', 'ProductoController@detalleProducto');
 
 Route::get('/categoria/agregar', function(){
@@ -106,4 +98,14 @@ Route::get('/categoria/agregar', function(){
 
 
 Route::get('/categoria/{id}', 'ProductoController@categoriaShow');
+
+#--------------------------------------------------
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+# ------------------------------
+
+Route::get("/add-to-cart/{id}", "ProductoController@getAddToCart");
 

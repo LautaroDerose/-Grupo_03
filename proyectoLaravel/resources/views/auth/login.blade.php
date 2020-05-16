@@ -16,7 +16,7 @@
     <section class="ml-4 mt-4">
       <div class ="row justify-content-md-center mt-4">
         <div class="col-lg-4 col-md-6 col-xs-12 ">
-          <img class="img-responsive" src="perfil-user.svg" height="300px" width="220px" alt="perfil">
+          
 
           <h2 class="form-signin-heading">Complete con sus datos</h2>
 

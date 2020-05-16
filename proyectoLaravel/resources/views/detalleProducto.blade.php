@@ -8,8 +8,12 @@
 @section("contenido")
 
 <div class="row">
+
 	@if(isset($producto))
+
 	<div class="card col-xs col-sm col-md-8 col-lg-5 p-0 mr-1 mb-1 " style="width: 17rem;">
+
+            <h3>Detalle de producto</h3>
             @if($producto["foto"] != null)
 
             <img src="{{asset('/storage/fotoProducto/$producto->foto')}}" class="card-img-top" alt="image-product">

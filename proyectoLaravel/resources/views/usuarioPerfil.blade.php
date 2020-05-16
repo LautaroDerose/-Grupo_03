@@ -14,8 +14,13 @@
     <div class="row ml-4">
 
       <div class="col-lg-8 col-md-6 col-xs-12 ">
-
+      
+      @if(Auth::user()->foto == null )
+        <img class="img-responsive" src="{{asset('perfil-user.svg')}}" height="300px" width="220px" alt="perfil">
+      @else
        <a href="#"><img class="img-responsive" src="/storage/userFoto/{{ Auth::user()->foto }}" height="300px" width="300" alt ="image-perfil"></a>
+      @endif
+
      </div>
      <div class="col-lg-4 col-md-6 col-xs-12 mt-4">
       <table class="table table-hover table-borderless">

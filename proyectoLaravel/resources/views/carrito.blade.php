@@ -21,16 +21,26 @@
 							<th colspan="2">RESUMEN DE COMPRA</th>
 						</thead>
 						<tr>
-							<th scope="row">Producto</th>
-							<td>Computer</td>
+							
+							<th>Nombre</th>
+							<th>Precio</th>
+							<th>Cantidad</th>
 						</tr>
+						@if(Session::has('cart') )
+						@foreach(Session::get('cart')->items as $product)
 						<tr>
-							<th scope="row">Subtotal</th>
-							<td></td>
+							
+							<td>{{$product["nombre"]}}</td>
+							<td>${{$product["price"]}}</td>
+							<td>{{$product["qty"]}}</td>
+							
 						</tr>
+						@endforeach
+						@endif
+
 						<tr>
-							<th scope="row">Total</th>
-							<td></td>
+							<th scope="row">TOTAL </th>
+							<td>{{Session::has('cart') ? Session::get('cart')->totalPrice : "" }}</td>
 						</tr>
 					</tbody>
 				</table>
@@ -39,28 +49,7 @@
 
 			</div>
 		</div>
-		<div class ="row justify-content-md-center mt-4">
-			<div class=" col-lg-6 col-lg-offset-2 col-md-4 col-xs-12 mt-4 ">
-				<h2>Caracteristicas del producto</h2>
-				<table class="table table-hover table-borderless">
-					<tbody>
-						<tr>
-							<th scope="row">Producto:</th>
-							<td>Computer</td>
-						</tr>
-						<tr>
-							<th scope="row">Marca</th>
-							<td></td>
-						</tr>
-						<tr>
-							<th scope="row">Modelo</th>
-							<td></td>
-						</tr>
-					</tbody>
-				</table>
-
-			</div>
-		</div>
+		
 	</section>
 
 

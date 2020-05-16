@@ -10,6 +10,9 @@
         
         @section("titulo principal")
           Nuestros Productos
+          @if(isset($nombreCate))
+          <h3>{{$nombreCate->nombre}}</h3>
+          @endif
         @endsection 
 
         
@@ -84,12 +87,15 @@
               @else
                 @if($producto->stock > 0)
                 <p class="card-text bg-success ">En Stock</p>
-
-                <a href="#" class="btn btn-primary">Comprar</a>
+                @if(Auth::user())
+                <a href="{{ url("/add-to-cart/$producto->idProducto") }}" class="btn btn-primary">Agregar al carrito</a>
+                @else
+                <a href="#" class="btn btn-primary emergent" onclick="emergente()">Comprar</a>
+                @endif
                 @else
                 <p class="card-text bg-danger ">Sin Stock</p>
                 @endif
-                
+                $
               @endif
 
             </div>
@@ -102,7 +108,7 @@
 
       
       </div>
-
+    {{$productos->links()}}
       
     @endsection
 

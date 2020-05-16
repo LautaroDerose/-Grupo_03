@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 use App\Producto;
 use Illuminate\Support\Facades\Storage;
 use App\Categoria;
+use App\Carrito;
+use Session;
 
 class ProductoController extends Controller
 {
     public function listar(){
-    	$productos = Producto::all(); //SELECT * FROM productos
+    	$productos = Producto::paginate(9); //SELECT * FROM productos
         $categorias = Categoria::all();
     	//$productos = Producto::paginate(2); para enviar los datos paginados, en vez de all() o tambien de get(), usar en el vista {{$productos->links}} asi muestras todas las paginas.
 
@@ -85,12 +87,12 @@ class ProductoController extends Controller
 
     public function ordenarProductos(Request $request){
         if ($request["order"] == "alto") {
-            $productos = Producto::orderBy('precio','DESC')->get();
+            $productos = Producto::orderBy('precio','DESC')->paginate(9);
             //dd($productos);
         }elseif ($request["order"]== "bajo") {
-            $productos = Producto::orderBy('precio','ASC')->get();
+            $productos = Producto::orderBy('precio','ASC')->paginate(9);
         }elseif ($request["order"] == "alfabetico") {
-            $productos = Producto::orderBy('nombre','ASC')->get();
+            $productos = Producto::orderBy('nombre','ASC')->paginate(9);
         }else{
             return $this->listar();
         }
@@ -148,7 +150,7 @@ class ProductoController extends Controller
     public function buscarProductos(Request $request){
         $categorias = Categoria::all();
         $nombre = $request["campo"];
-        $productos = Producto::where('nombre', 'like', '%' . $nombre . '%')->get();
+        $productos = Producto::where('nombre', 'like', '%' . $nombre . '%')->paginate(9);
 
 
         return view('productos', compact('productos', 'categorias'));
@@ -160,10 +162,23 @@ class ProductoController extends Controller
     }
 
     public function categoriaShow($id){
-        $productos = Categoria::find($id)->productos()->get();
+        $nombreCate = Categoria::find($id);
+        $nombreCate->nombre;
+        $productos = Categoria::find($id)->productos()->paginate(9);
         $categorias = Categoria::all();
 
-        return view('productos', compact('productos' , 'categorias'));
+        return view('productos', compact('productos' , 'categorias', 'nombreCate'));
+    }
+
+    public function getAddToCart(Request $request, $id){
+        $producto = Producto::find($id);
+        $oldCart = Session::has('cart') ? Session::get('cart') : null ;
+        $cart = new Carrito($oldCart);
+        $cart->add($producto, $producto->idProducto);
+
+        $request->session()->put('cart', $cart);
+        //dd($request->session()->get('cart'));
+        return redirect("/productos");
     }
 
 }
