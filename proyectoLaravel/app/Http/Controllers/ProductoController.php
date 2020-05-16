@@ -142,8 +142,9 @@ class ProductoController extends Controller
 
     public function actualizarForm($id){
         $producto = Producto::find($id);
+        $categorias = Categoria::all();
 
-        return view('productoActualizar', compact('producto'));
+        return view('productoActualizar', compact('producto', 'categorias'));
 
     }
 
@@ -179,6 +180,18 @@ class ProductoController extends Controller
         $request->session()->put('cart', $cart);
         //dd($request->session()->get('cart'));
         return redirect("/productos");
+    }
+
+    public function removeToCart(Request $request, $id){
+
+        $producto = Producto::find($id);
+        $oldCart = Session::has('cart') ? Session::get('cart') : null ;
+        $cart = new Carrito($oldCart);
+        $cart->remove($producto->idProducto);
+
+        $request->session()->put('cart', $cart);
+        // dd($request->session()->get('cart'));
+        return redirect("/carrito");
     }
 
 }

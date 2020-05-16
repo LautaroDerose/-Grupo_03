@@ -34,9 +34,15 @@ class CategoriaController extends Controller
     	return view('categorias', compact('categorias'));
     }
 
-    public function eliminar(Request $request){
-    	$producto = Producto::find($request["id"]);
-        $producto->delete();
+    public function desactivar(Request $request){
+    	$categoria = Categoria::find($request["id"]);
+        if($categoria->borrado_logico == 0)  {
+            $categoria->borrado_logico = 1;
+        }else{
+            $categoria->borrado_logico = 0;
+        }
+        
+        $categoria->save();
     	return redirect("/categorias");
     }
 }
