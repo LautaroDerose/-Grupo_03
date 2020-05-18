@@ -19,7 +19,7 @@ Registro
 @section("contenido")
 <div class ="row justify-content-md-center mt-4">
       <div class="col-lg-4 col-md-6 col-xs-12 ">
-        <form class="form-signin" action="{{ route('register') }}" method="POST" enctype="multipart/form-data">
+        <form class="form-signin" action="{{ route('register') }}" method="POST" enctype="multipart/form-data" id="formRegistro">
           @csrf
 
           <div class="form-group">
@@ -30,7 +30,7 @@ Registro
 
 
             @error('name')
-                <small  class="text-danger">{{ $message }}</small>  
+                <small  class="text-danger">{{ $message }}</small>
             @enderror
 
            </div>
@@ -41,7 +41,7 @@ Registro
             <input type="text" id="inputApellido" class="form-control mb-4 @error('apellido') is-invalid @enderror" name="apellido" placeholder="Apellido" value="{{ old('apellido') }}" autocomplete="apellido" autofocus required >
 
             @error('apellido')
-                <small  class="text-danger">{{ $message }}</small>  
+                <small  class="text-danger">{{ $message }}</small>
             @enderror
           </div>
 
@@ -54,7 +54,7 @@ Registro
 
 
               @error('email')
-                <small  class="text-danger">{{ $message }}</small>  
+                <small  class="text-danger">{{ $message }}</small>
             @enderror
            </div>
 
@@ -68,7 +68,7 @@ Registro
 
 
           @error('password')
-                <small  class="text-danger">{{ $message }}</small>  
+                <small  class="text-danger">{{ $message }}</small>
             @enderror
         </div>
 
@@ -86,9 +86,10 @@ Registro
         </div>
 
 
-        <button class="btn btn-lg btn-primary btn-block black-background white" type="submit">Registrarse</button>
+        <button class="btn btn-lg btn-primary btn-block black-background white" type="submit" id="enviarForm">Registrarse</button>
       </form>
     </div>
+    <script src="resources\js\validacion_registro.js"></script>
   </div>
 
 @endsection

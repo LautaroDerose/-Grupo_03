@@ -19,7 +19,7 @@ Agrergar Porducto
 <div class ="row justify-content-md-center mt-4">
   <div class="col-lg-4 col-md-6 col-xs-12 ">
     <h2 class="form-signin-heading">Nuevo Producto</h2>
-    <form class="form-signin" action="{{url('producto/agregar')}}" method="POST" enctype="multipart/form-data">
+    <form id="formAddProduct" class="form-signin" action="{{url('producto/agregar')}}" method="POST" enctype="multipart/form-data">
      @csrf
      <div class="form-group">
        <label for="inputNombre" class="sr-only">Nombre</label>
@@ -43,7 +43,7 @@ Agrergar Porducto
        <input type="text" id="inputStock" class="form-control mb-4" name="stock" placeholder="Stock"  value="{{ old("stock") }}">
        @if ($errors->has("stock"))
        <small  class="text-danger"> {{ $errors->first("stock") }}</small>
-       @endif 
+       @endif
      </div>
 
 
@@ -69,7 +69,7 @@ Agrergar Porducto
       <label for="archivo">Foto de producto</label>
       <input type="file" name="archivo">
     </div>
-    <button class="btn btn-lg btn-primary btn-block black-background white" type="submit">Agregar Producto</button>
+    <button id="agregarProducto" class="btn btn-lg btn-primary btn-block black-background white" type="submit">Agregar Producto</button>
 
   </form>
 
