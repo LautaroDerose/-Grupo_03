@@ -31,7 +31,37 @@
               <p class="card-text">{{$producto->descripcion}}</p>
 
             </div>
+
+
          </div>
+         <div class= "float-right">
+          @if ( Auth::user() and Auth::user()->is_admin ) 
+              
+              <p>Hay stock de {{$producto->stock}}</p>
+               
+              <a href="/producto/actualizar/{{ $producto['idProducto']}}" class="btn btn-primary">Modificar</a>
+
+
+              <form class="form-signin" action="/producto/eliminar" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group">
+                  <input type="hidden" id="inputName" class="form-control mb-4" name="id"  value="{{ $producto["idProducto"]}}">
+                  <button class="btn btn-danger mt-4" type="submit">Eliminar</button>
+                </div>
+              </form>
+              @else
+                @if($producto->stock > 0)
+                
+                @if(Auth::user())
+                <a href="{{ url("/addToCart/$producto->idProducto") }}" class="btn btn-primary">Agregar al carrito</a>
+                @else
+                <a href="#" class="btn btn-primary emergent" onclick="emergente()">Comprar</a>
+                @endif
+                @endif
+                
+              @endif
+
+          </div>
     @else
 		<p>No se encontro el producto</p>
 	@endif  

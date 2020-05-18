@@ -27,13 +27,11 @@
             <div class="card-body">
               <div class="card-header">
                 <p>{{$categoria["nombre"]}}</p>
-              <form class="form-signin" action="/categoria/eliminar" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="form-group">
-                  <input type="hidden" id="inputName" class="form-control mb-4" name="id"  value="{{ $categoria["idProducto"]}}">
-                  <button class="btn btn-danger mt-4" type="submit">Eliminar</button>
-                </div>
-              </form>
+                @if($categoria->borrado_logico == 0)
+                <a href="eliminarCategoria/{{$categoria->id}}">Desactivar</a>
+                @else
+                  <a href="eliminarCategoria/{{$categoria->id}}">Activar</a>
+                @endif 
             </div>
           </div>
 

@@ -84,7 +84,8 @@ Route::group(['middleware' => 'admin'], function () {
 	Route::get('/producto/actualizar/{id}', 'ProductoController@actualizarForm');
 	Route::post('/categoria/agregar', 'CategoriaController@agregar');
 	Route::get('/categorias', 'CategoriaController@listar');
-	Route::post('/categoria/eliminar','CategoriaController@eliminar');
+	Route::get("eliminarCategoria/{id}", "CategoriaController@desactivar");
+
 });
 
 Route::get('/productos', 'ProductoController@listar');
@@ -107,5 +108,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 # ------------------------------
 
-Route::get("/add-to-cart/{id}", "ProductoController@getAddToCart");
+Route::get("/addToCart/{id}", "ProductoController@getAddToCart");
+
+Route::get("removeToCart/{id}", "ProductoController@removeToCart");
 

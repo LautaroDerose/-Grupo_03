@@ -32,6 +32,18 @@ class Carrito
     	$this->items[$id] = $storedItem;
     	$this->totalQty++;
     	$this->totalPrice += $item->precio;
-    	
+        //dd($this);    	
+    }
+
+    public function remove($id){
+        $this->totalQty -= $this->items[$id]["qty"];
+        $this->totalPrice -= $this->items[$id]["price"];
+        unset($this->items[$id]);
+        if($this->totalQty == 0 ){
+            $this->totalPrice = 0;
+        }
+
+        
+
     }
 }

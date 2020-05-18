@@ -17,6 +17,7 @@ class CreatePreguntasTable extends Migration
             $table->bigIncrements('idPregunta');
             $table->text('titulo');
             $table->text('pregunta');
+            $table->text('respuesta');
             $table->timestamps();
         });
     }

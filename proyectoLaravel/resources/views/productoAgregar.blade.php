@@ -58,7 +58,9 @@ Agrergar Porducto
     <select id="categoria" name="categoria" class="custom-select">
       <option selected>Open this select menu</option>
       @forelse($categorias as $categoria)
+      @if($categoria->borrado_logico == 0)
       <option value="{{$categoria->id}}"> {{$categoria->nombre}}</option>
+      @endif
       @empty
         <option value="0">Ninguno</option>
       @endforelse

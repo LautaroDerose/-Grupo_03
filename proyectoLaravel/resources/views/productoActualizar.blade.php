@@ -3,13 +3,13 @@
 
 
 @section("titulo")
-Registrar Producto
+Actualizacion
 
 @endsection
 
 
 @section("titulo principal")
-Agrergar Porducto
+Actualizar Producto
 
 @endsection
 
@@ -18,7 +18,7 @@ Agrergar Porducto
 
 <div class ="row justify-content-md-center mt-4">
   <div class="col-lg-4 col-md-6 col-xs-12 ">
-    <h2 class="form-signin-heading">Nuevo Producto</h2>
+    <h2 class="form-signin-heading">Producto</h2>
     <form class="form-signin" action="{{url('producto/actualizar')}}" method="POST" enctype="multipart/form-data">
      @csrf
      <div class="form-group">
@@ -55,11 +55,22 @@ Agrergar Porducto
       <small  class="text-danger"> </small>
 
     </div>
+    <select id="categoria" name="categoria" class="custom-select">
+      <option selected>Open this select menu</option>
+      @forelse($categorias as $categoria)
+      @if($categoria->borrado_logico == 0)
+      <option value="{{$categoria->id}}"> {{$categoria->nombre}}</option>
+      @endif
+      @empty
+        <option value="0">Ninguno</option>
+      @endforelse
+    </select>
+
     <div class='container mb-4'>
       <label for="archivo">Foto de producto</label>
       <input type="file" name="archivo">
     </div>
-    <button class="btn btn-lg btn-primary btn-block black-background white" type="submit">Actualziar Producto</button>
+    <button class="btn btn-lg btn-primary btn-block black-background white" type="submit">Actualizar Producto</button>
 
   </form>
 

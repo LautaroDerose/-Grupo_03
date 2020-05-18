@@ -36,7 +36,9 @@
 
       <h2>Categorias</h2>
       @foreach($categorias as $categoria)
+      @if($categoria->borrado_logico == 0)
       <a class="dropdown-item" href="{{url("categoria/$categoria->id") }}">{{$categoria->nombre}}</a>
+      @endif
       @endforeach
 
       <div class="float-left mr-2 mt-4">
@@ -58,7 +60,7 @@
           <div class="card col-xs col-sm-11 col-md-10 col-lg-3 p-0 mr-1 mb-1 " style="width: 17rem;">
             @if($producto["foto"] != null)
 
-            <img src="{{asset('/storage/fotoProducto/$producto->foto')}}" class="" alt="image-product">
+            <img src="/storage/fotoProducto/{{ $producto->foto }}" class="" alt="image-product">
             @else
               <img src="{{asset('unnamed.png')}}" class="" alt="image-product">
             @endif
@@ -88,14 +90,14 @@
                 @if($producto->stock > 0)
                 <p class="card-text bg-success ">En Stock</p>
                 @if(Auth::user())
-                <a href="{{ url("/add-to-cart/$producto->idProducto") }}" class="btn btn-primary">Agregar al carrito</a>
+                <a href="{{ url("/addToCart/$producto->idProducto") }}" class="btn btn-primary">Agregar al carrito</a>
                 @else
                 <a href="#" class="btn btn-primary emergent" onclick="emergente()">Comprar</a>
                 @endif
                 @else
                 <p class="card-text bg-danger ">Sin Stock</p>
                 @endif
-                $
+                
               @endif
 
             </div>
