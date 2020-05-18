@@ -14,7 +14,7 @@ function iniciar(){
 function validarEmail(inputEmail){
   var elemento = document.getElementById("inputEmail");
   var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-  var esValido = regex.test(inputEmail);
+  var esValido = regex.test(elemento.value);
   if (esValido === false) {
       alert("El correo no es valido");
   }
@@ -25,17 +25,12 @@ function validarEmail(inputEmail){
     var pass = document.getElementById("inputPassword");
     var espacios = false;
     var cont = 0;
-    while (!espacios && (cont < pass.length)){
-      if (pass.charAt(cont)=== " ") {
-        espacios = true;
-        cont++;
-      }
-}
+
       if (espacios) {
         alert("La contrase;a no puede tener espacios en blanco");
         return false;
       }
-      if(pass.length === 0){
+      if(pass.value.length === 0){
         alert("los campos de la password no pueden estar vacios");
         return false;
       }
