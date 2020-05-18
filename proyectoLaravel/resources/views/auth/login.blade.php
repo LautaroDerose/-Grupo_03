@@ -20,7 +20,7 @@
 
           <h2 class="form-signin-heading">Complete con sus datos</h2>
 
-          <form class="form-signin" action="{{ route('login') }}" method="post">
+          <form class="form-signin" id="formLogin" action="{{ route('login') }}" method="post">
             @csrf
 
             <div class="form-group">
@@ -61,7 +61,7 @@
 
 
 
-            <button class="btn btn-lg btn-primary btn-block black-background white" type="submit">{{ __('Entrar') }}</button>
+            <button class="btn btn-lg btn-primary btn-block black-background white" id="enviarForm" type="submit">{{ __('Entrar') }}</button>
 
             @if (Route::has('password.request'))
                 <a class="btn btn-link" href="{{ route('password.request') }}">
@@ -73,7 +73,8 @@
           </form>
         </div>
         <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-        <script src="/js/validacion_login.js"></script>
+
+    <script src="/js/validacion_login.js"></script>
       </div>
     </section>
 

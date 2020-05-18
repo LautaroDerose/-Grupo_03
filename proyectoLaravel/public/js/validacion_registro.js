@@ -13,7 +13,7 @@ function iniciar(){
 function validarNombre(){
   var elemento = document.getElementById("inputName");
   if(elemento.value === ""){
-    alert("El campo no puede estar vacio");
+    alert("El campo nombre no puede estar vacio");
     return false
   }
   return true;
@@ -22,7 +22,7 @@ function validarNombre(){
 function validarApellido(){
   var elemento = document.getElementById("inputApellido");
   if(elemento.value === ""){
-    alert("El campo no puede estar vacio");
+    alert("El campo apellido no puede estar vacio");
     return false
   }
   return true;
@@ -32,31 +32,35 @@ function validarEmail(inputEmail){
   var elemento = document.getElementById("inputEmail");
   var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
   var esValido = regex.test(elemento.value);
-  if (!esValido ) {
-      alert("El email no es valido")
+
+  if (esValido === false) {
+      alert("El correo no es valido");
   }
-  return true
-  }
+  return true;
+    }
 
   function validarPass(){
     var pass = document.getElementById("inputPassword");
     var passConfirm = document.getElementById("password-confirm");
     var espacios = false;
     var cont = 0;
+
       if (espacios) {
         alert("La contraseña no puede tener espacios en blanco");
         return false;
       }
-      if(pass.value === "" || passConfirm.value===""){
+
+      if(pass.value.length === 0 || passConfirm.value.length === 0){
+
         alert("los campos de la password no pueden estar vacios");
         return false;
       }
       if(pass.value != passConfirm.value){
         alert("Las passwords deben coincidir");
         return false;
-      }else {
-        return true;
       }
+        return true;
+
 
   }
 
