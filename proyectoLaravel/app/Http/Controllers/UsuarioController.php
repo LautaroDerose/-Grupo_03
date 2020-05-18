@@ -25,9 +25,6 @@ class UsuarioController extends Controller
             'string' => "El :attribute debe ser solo letras"
         ];
 
-        //dd($errores);
-
-        //$this->validate($request,$error,$msj);
 
         Validator::make($request->all(), [
             "name" => 'required|string|max:45|min:3',
@@ -44,7 +41,6 @@ class UsuarioController extends Controller
 
 
         $usuario = User::find($request["id"]);
-        //dd($request);
         $usuario->name = $request["name"];
         $usuario->apellido = $request["apellido"];
         $usuario->email = $request["email"];
@@ -62,6 +58,4 @@ class UsuarioController extends Controller
         return redirect("/usuario/perfil");
     }
 
-   
-   
 }
