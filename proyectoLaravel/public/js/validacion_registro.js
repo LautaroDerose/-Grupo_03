@@ -13,7 +13,7 @@ function iniciar(){
 function validarNombre(){
   var elemento = document.getElementById("inputName");
   if(elemento.value === ""){
-    alert("El campo no puede estar vacio");
+    alert("El campo nombre no puede estar vacio");
     return false
   }
   return true;
@@ -22,7 +22,7 @@ function validarNombre(){
 function validarApellido(){
   var elemento = document.getElementById("inputApellido");
   if(elemento.value === ""){
-    alert("El campo no puede estar vacio");
+    alert("El campo apellido no puede estar vacio");
     return false
   }
   return true;
@@ -32,11 +32,10 @@ function validarEmail(inputEmail){
   var elemento = document.getElementById("inputEmail");
   var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
   var esValido = regex.test(inputEmail);
-  if (esValido === true) {
-      alert("El correo es valido");
-  }else {
-    alert("El correo no es valido")
+  if (esValido === false) {
+      alert("El correo no es valido");
   }
+  return true;
     }
 
   function validarPass(){

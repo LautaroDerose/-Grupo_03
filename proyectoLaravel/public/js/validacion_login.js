@@ -1,38 +1,54 @@
-//-------LOGIN VADLIDACIONES
-/*
-function validar(){
-inputEmail inputPassword  ids
-  var email, pass;
-  email = document.getElementById("inputEmail").value;
-  pass = document.getElementById("inputPassword").value;
 
-if(email === "" || pass === ""){
-  alert("Todos los campos son obligatorios");
+var formulario = document.getElementById('formLogin');
+//var formulario2 = document.forms['formRegistro'];
+// seleccionar elementos del formulario
+//.elements[] devuelve array con todos los imputs
+// getElementById devuelve elemento con id
+
+window.onload = iniciar;
+function iniciar(){
+  document.getElementById("enviarForm").addEventListener('click',validar, false);
+}
+
+
+function validarEmail(inputEmail){
+  var elemento = document.getElementById("inputEmail");
+  var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  var esValido = regex.test(inputEmail);
+  if (esValido === false) {
+      alert("El correo no es valido");
+  }
+  return true;
+    }
+
+  function validarPass(){
+    var pass = document.getElementById("inputPassword");
+    var espacios = false;
+    var cont = 0;
+    while (!espacios && (cont < pass.length)){
+      if (pass.charAt(cont)=== " ") {
+        espacios = true;
+        cont++;
+      }
+}
+      if (espacios) {
+        alert("La contrase;a no puede tener espacios en blanco");
+        return false;
+      }
+      if(pass.length === 0){
+        alert("los campos de la password no pueden estar vacios");
+        return false;
+      }
+
+  }
+
+
+//validacion de todas las funciones
+function validar(e){
+  if (validarEmail() && validarPass() && confirm("Pulsa aceptar si desea enviar el formulario")) {
+return true;
+}else {
+  e.preventDefault();
   return false;
-}else if (email.length>45) {
-  alert("la cantidad de caracteres la cantidad valida");
-}else if (pass.length>150) {
-  alert("la cantidad de caracteres la cantidad valida");
 }
-}
-
-var elFormulario = document.querySelector('form-signin');
-var losElementosDelFormulario = elFormulario.elements;
-var valorDelCampoNombre = losElementosDelFormulario[0].value;
-*/
-
-
-
-var campoEmail = document.querySelector('input[name=email]');
-var campoPass = document.querySelector('input[name=password]');
-var elFormulario = document.querySelector('form-sigin');
-
-elFormulario.onsubmit = function(evento){
-  evento.preventDefault();
-  console.log(formulario enviado);
-}
-
-
-campoEmail.onfocus = function(){
-
 }
