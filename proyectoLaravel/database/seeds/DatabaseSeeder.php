@@ -13,8 +13,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-  //  $this->call(SeedUsuarios::class);
- 		//$this->call(SeedCategorias::class);
+        $this->call(SeedUsuarios::class);
+ 		$this->call(SeedCategorias::class);
  		$this->call(SeedFaq::class);
     factory(Producto::class)->times(100)->create();
 
