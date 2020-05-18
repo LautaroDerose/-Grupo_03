@@ -29,7 +29,7 @@
 
             @auth
            @if (Auth::user()->is_admin)
-         
+
           <li class="nav-item">
             <a class="nav-link" href="{{ url('producto/agregar') }}">Añadir producto</a>
           </li>
@@ -37,12 +37,12 @@
             <a class="nav-link" href="{{ url('categorias') }}">Administrar Categorias</a>
           </li>
           @endif
-          
-          
+
+
 
           @endauth
-          
-          
+
+
         </ul>
         <ul class="navbar-nav ml-auto">
           <!-- Authentication Links -->
@@ -75,7 +75,7 @@
 
           </div>
         </li>
-       
+
         <div>
 
           <a class="nav-link" href="{{ url('/carrito') }}">
@@ -85,7 +85,7 @@
         </div>
         @endguest
       </ul>
-      
+
     </div>
   </nav>
 </header>
@@ -133,7 +133,7 @@
         <h6 class="text"><a href="{{ url('/contacto') }}" class="nav-link">Contacto</a></h6>
         <h6 class="text"><a class="nav-link" href="{{ url('/preguntas')}}">F.A.Q.</a></h6>
         <h56 class="text"><a class="nav-link" href="#">Reportar problema</a></h6>
-        
+
 
       </div>
       <!-- Grid column -->
@@ -158,5 +158,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="/js/main.js"></script>
+<script src="/js/validacion_login.js"></script>
+<script src="/js/validacion_productos.js"></script>
+<script src="/js/validacion_registro.js"></script>
 </body>
 </html>

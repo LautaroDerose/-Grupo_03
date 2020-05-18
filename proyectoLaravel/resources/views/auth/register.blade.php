@@ -89,7 +89,8 @@ Registro
         <button class="btn btn-lg btn-primary btn-block black-background white" type="submit" id="enviarForm">Registrarse</button>
       </form>
     </div>
-    <script src="resources\js\validacion_registro.js"></script>
+    <script src="/js/validacion_registro.js"></script>
+
   </div>
 
 @endsection
