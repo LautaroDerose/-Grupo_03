@@ -58,6 +58,8 @@ function validarEmail(inputEmail){
       if(pass.value != passConfirm.value){
         alert("Las passwords deben coincidir");
         return false;
+
+
       }
         return true;
 

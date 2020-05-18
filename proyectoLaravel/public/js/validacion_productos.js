@@ -4,7 +4,7 @@ var formulario = document.getElementById('formAddProduct');
 //.elements[] devuelve array con todos los imputs
 // getElementById devuelve elemento con id
 
-window.onload = iniciar;
+window.onload = iniciar();
 function iniciar(){
   document.getElementById("agregarProducto").addEventListener('click',validar, false);
 }

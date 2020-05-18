@@ -8,10 +8,19 @@
 <section class="ml-4 mt-4">
 		<div class="row pt-4">
 			<div class="col-lg-6 col-md-6 col-xs-12 ">
-				<h2>Productos</h2>
-
-				<a href="#"><img class="img-responsive" src="globos.svg" height="300px" width="220px" alt ="image-producto"></a>
 				
+				@forelse(Session::get('cart')->items as $product)
+				<h2>Productos</h2>
+				@if($product['item']['foto'] == null)
+					<img src="{{asset('unnamed.png')}}" class="img-responsive" width="30%" alt="image-product">
+				@else
+				<img src="/storage/fotoProducto/{{$product['item']['foto']}}" width="30%" class="img-responsive" alt="image-product">
+				@endif
+				@empty
+				<h4>No has agregado productos al carrito!</h4>
+				<a href="#"><img class="img-responsive" src="globos.svg" height="300px" width="220px" alt ="image-producto"></a>
+
+				@endforelse
 			</div>
 
 			<div class="col-lg-5 col-md-5 col-xs-12  mt-4 mr-1">
