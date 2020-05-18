@@ -5,7 +5,7 @@ var formulario = document.getElementById('formLogin');
 //.elements[] devuelve array con todos los imputs
 // getElementById devuelve elemento con id
 
-window.onload = iniciar;
+window.onload = iniciar();
 function iniciar(){
   document.getElementById("enviarForm").addEventListener('click',validar, false);
 }

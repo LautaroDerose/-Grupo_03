@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
-
 class SeedCategorias extends Seeder
 {
     /**
@@ -12,7 +11,7 @@ class SeedCategorias extends Seeder
      */
     public function run()
     {
-        DB::table('categorias')->insert([
+      DB::table('categorias')->insert([
         	'nombre'=> 'Cotillon',
         	'created_at' => Carbon::now(),
         	'updated_at' => Carbon::now()
