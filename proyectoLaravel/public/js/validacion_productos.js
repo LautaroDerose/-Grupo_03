@@ -48,16 +48,24 @@ function validarDescripcion(){
   }
   return true;
 }
-
+/*
 function validarCategorias(){
   var elemento = document.getElementById("categoria").selectedIndex;
 var valor = elemento.value;
-  if (valor === "") {
+  if (valor === "selectedOption") {
     console.log(valor);
     alert("debe seleccionar una categoria");
     return false;
   }
   return true;
+}*/
+function validarCategorias(){
+  var elemento = document.getElementById("categoria");
+if(elemento.value == ""){
+  alert("debes seleccionar una categoria");
+  return false;
+}
+return true;
 }
 /*
 function validarCategorias(){
