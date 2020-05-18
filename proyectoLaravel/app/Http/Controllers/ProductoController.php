@@ -18,11 +18,13 @@ class ProductoController extends Controller
     }
 
     public function guardar(Request $request){
+        //dd($request);
     	$errores = [
     		"nombre" => 'required|string|max:60|min:3',
     		"precio" => 'required|numeric',
     		"descripcion" => 'string|max:255|',
             "stock" => 'required|numeric',
+            "categoria" => 'required|numeric',
     	];
 
     	$mensajes = [
