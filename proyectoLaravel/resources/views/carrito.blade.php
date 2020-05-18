@@ -9,8 +9,9 @@
 		<div class="row pt-4">
 			<div class="col-lg-6 col-md-6 col-xs-12 ">
 				@if(Session::has('cart') )
-				@foreach(Session::get('cart')->items as $product)
 				<h2>Productos</h2>
+				@foreach(Session::get('cart')->items as $product)
+				
 				@if($product['item']['foto'] == null)
 					<img src="{{asset('unnamed.png')}}" class="img-responsive" width="30%" alt="image-product">
 				@else
