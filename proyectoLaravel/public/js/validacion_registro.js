@@ -1,11 +1,7 @@
 //Seleccion de formulario segun id
 var formulario = document.getElementById('formRegistro');
-//var formulario2 = document.forms['formRegistro'];
-// seleccionar elementos del formulario
-//.elements[] devuelve array con todos los imputs
-// getElementById devuelve elemento con id
 
-window.onload = iniciar;
+window.onload = iniciar();
 function iniciar(){
   document.getElementById("enviarForm").addEventListener('click',validar, false);
 }

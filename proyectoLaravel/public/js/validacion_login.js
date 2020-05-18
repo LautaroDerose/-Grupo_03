@@ -21,6 +21,13 @@ var losElementosDelFormulario = elFormulario.elements;
 var valorDelCampoNombre = losElementosDelFormulario[0].value;
 */
 
+<<<<<<< HEAD
+window.onload = iniciar();
+function iniciar(){
+  document.getElementById("enviarForm").addEventListener('click',validar, false);
+}
+=======
+>>>>>>> f6b597bc834aae7ae8293b8f9ef4adce712dcd13
 
 
 var campoEmail = document.querySelector('input[name=email]');

@@ -56,15 +56,13 @@ Agrergar Porducto
     </div>
 
     <select id="categoria" name="categoria" class="custom-select">
-      <option value=" ">Open this select menu</option>
-      @forelse($categorias as $categoria)
+      <option value="" selected>Open this select menu</option>
+      @foreach($categorias as $categoria)
       @if($categoria->borrado_logico == 0)
       <option value="{{$categoria->id}}"> {{$categoria->nombre}}</option>
       @endif
-      @empty
-        <option value="0">Ninguno</option>
-      @endforelse
-      
+
+    @endforeach
     </select>
     @if ($errors->has("categoria"))
        <small  class="text-danger"> {{ $errors->first("categoria") }}</small>

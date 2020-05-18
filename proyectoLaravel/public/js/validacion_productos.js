@@ -1,8 +1,4 @@
 var formulario = document.getElementById('formAddProduct');
-//var formulario2 = document.forms['formRegistro'];
-// seleccionar elementos del formulario
-//.elements[] devuelve array con todos los imputs
-// getElementById devuelve elemento con id
 
 window.onload = iniciar();
 function iniciar(){
@@ -12,7 +8,7 @@ function iniciar(){
 function validarNombre(){
   var elemento = document.getElementById("inputNombre");
   if(elemento.value === ""){
-    alert("El campo no puede estar vacio");
+    alert("El campo nombre no puede estar vacio");
     return false
   }
   return true;
@@ -20,8 +16,12 @@ function validarNombre(){
 
 function validarPrecio(){
   var elemento = document.getElementById("inputPrecio");
-  if (isNaN(elemento.value)) {
-    alert("El precio debe estar expresado en numeros");
+  if (elemento.value === "" ) {
+    alert("El campo precio no puede estar vacio y debe estar expresado en numeros");
+    return false;
+  }
+  if ( isNaN(elemento.value)) {
+    alert("El campo precio no puede estar vacio y debe estar expresado en numeros");
     return false;
   }
   return true;
@@ -29,8 +29,12 @@ function validarPrecio(){
 // El label de stock tiene (for="inputPrecio") deberiamos cambiarlo a inputStock?
 function validarStock(){
   var elemento = document.getElementById("inputStock");
-  if (isNaN(elemento.value)) {
-    alert("El stock debe estar expresado en numeros");
+  if (elemento.value === "" ) {
+    alert("El campo stock no puede estar vacio y debe estar expresado en numeros");
+    return false;
+  }
+  if ( isNaN(elemento.value)) {
+    alert("El campo stock no puede estar vacio y debe estar expresado en numeros");
     return false;
   }
   return true;
@@ -39,14 +43,42 @@ function validarStock(){
 function validarDescripcion(){
   var elemento = document.getElementById("inputDescripcion");
   if(elemento.value === ""){
-    alert("El campo no puede estar vacio");
+    alert("El campo descripcion no puede estar vacio");
     return false
   }
   return true;
 }
+/*
+function validarCategorias(){
+  var elemento = document.getElementById("categoria").selectedIndex;
+var valor = elemento.value;
+  if (valor === "selectedOption") {
+    console.log(valor);
+    alert("debe seleccionar una categoria");
+    return false;
+  }
+  return true;
+}*/
+function validarCategorias(){
+  var elemento = document.getElementById("categoria");
+if(elemento.value == ""){
+  alert("debes seleccionar una categoria");
+  return false;
+}
+return true;
+}
+/*
+function validarCategorias(){
+  var optionForm = document.forms["formAddProduct"]["name"].selectedIndex;
+  if (optionForm == 0) {
+    alert("debe seleccionar una categoria");
+    return false;
+  }
+  return true;
+}*/
 
 function validar(e){
-  if (validarNombre() && validarPrecio() && validarStock() && validarDescripcion() && confirm("Pulsa aceptar si desea enviar el formulario")) {
+  if (validarNombre() && validarPrecio() && validarStock() && validarDescripcion() && validarCategorias() && confirm("Pulsa aceptar si desea enviar el formulario")) {
 return true;
 }else {
   e.preventDefault();

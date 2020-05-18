@@ -72,9 +72,8 @@
             <p>¿ No tenes cuenta ? <a href="{{ url('register') }}">Registrate!</a></p>
           </form>
         </div>
-        <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-
-    <script src="/js/validacion_login.js"></script>
+      {{--  <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+--}}    <script src="/js/validacion_login.js"></script>
       </div>
     </section>
 
