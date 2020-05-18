@@ -77,6 +77,6 @@ Agrergar Porducto
 </div>
 <script src="/js/validacion_productos.js"></script>
 </div>
-
+<script src="/js/validacion_producto.js"></script>
 
 @endsection

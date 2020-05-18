@@ -40,30 +40,4 @@ class FaqController extends Controller
       return redirect("/preguntas");
 
     }
-/*
-public function responder(){
-  $preguntas = Faq::all();
-  $vac = compact("preguntas");
-  return view("preguntasResponder", $vac);
-  }
-
-  public function guardarRespuesta(Request $request){
-        $errores = [
-    "respuesta" => 'required|string',
-    ];
-    $mensajes = [
-      'required' => "El  :attribute es necesario",
-      'string' => "El :attribute debe ser solo letras"
-    ];
-
-    $this->validate($request,$errores,$mensajes);
-
-    $pregunta = new Faq();
-    $pregunta->respuesta = $request["respuesta"];
-
-    $pregunta->save();
-
-    return redirect("/preguntas");
-
-  }*/
 }

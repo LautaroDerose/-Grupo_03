@@ -12,18 +12,8 @@ use Session;
 class ProductoController extends Controller
 {
     public function listar(){
-    	$productos = Producto::paginate(9); //SELECT * FROM productos
+    	$productos = Producto::paginate(9); 
         $categorias = Categoria::all();
-    	//$productos = Producto::paginate(2); para enviar los datos paginados, en vez de all() o tambien de get(), usar en el vista {{$productos->links}} asi muestras todas las paginas.
-
-    	//$producto= Producto::find($id); -- SELECT * FROM productos WHERE idProducto= id
-
-    	//$producto = Producto::where("precion", ">", 100) 
-    	//->orderBy("precio") 
-    	//->get() ; se ejectuta la query que construi, solo para el where.
-
-    	//$pelicula = Pelicula::where("rating", ">", 5)->where ("rating", "<=", "8")->orderBy("title", "ASC")->get(); para doble condicion en el where, se llama la funcion where dos veces.
-
     	return view('productos', compact('productos' , 'categorias'));
     }
 
@@ -88,7 +78,6 @@ class ProductoController extends Controller
     public function ordenarProductos(Request $request){
         if ($request["order"] == "alto") {
             $productos = Producto::orderBy('precio','DESC')->paginate(9);
-            //dd($productos);
         }elseif ($request["order"]== "bajo") {
             $productos = Producto::orderBy('precio','ASC')->paginate(9);
         }elseif ($request["order"] == "alfabetico") {
@@ -121,7 +110,6 @@ class ProductoController extends Controller
         $this->validate($request,$errores,$mensajes);
 
         $producto = Producto::find($request["id"]);
-        //dd($request);
         $producto->nombre = $request["nombre"];
         $producto->precio = $request["precio"];
         $producto->descripcion = $request["descripcion"];
@@ -178,7 +166,6 @@ class ProductoController extends Controller
         $cart->add($producto, $producto->idProducto);
 
         $request->session()->put('cart', $cart);
-        //dd($request->session()->get('cart'));
         return redirect("/productos");
     }
 
@@ -190,7 +177,6 @@ class ProductoController extends Controller
         $cart->remove($producto->idProducto);
 
         $request->session()->put('cart', $cart);
-        // dd($request->session()->get('cart'));
         return redirect("/carrito");
     }
 

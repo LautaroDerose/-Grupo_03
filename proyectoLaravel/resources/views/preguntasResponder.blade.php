@@ -28,11 +28,6 @@ Conteste las ultimas preguntas
 
 
           </div>
-
-
-          {{--@unless ($pregunta->valoracion<5)
-      <p>Pregunta frecuente</p>
-          @endunless--}}
         </li>
       @empty
         <p>no hay preguntas</p>

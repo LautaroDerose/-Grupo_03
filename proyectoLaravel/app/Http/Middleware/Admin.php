@@ -18,6 +18,6 @@ class Admin
         if (auth()->check() && auth()->user()->is_admin){
             return $next($request);
         }
-        return redirect('/inicio');
+        return redirect('/');
     }
 }

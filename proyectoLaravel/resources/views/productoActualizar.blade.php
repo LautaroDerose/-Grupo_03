@@ -40,8 +40,10 @@ Actualizar Producto
        @endif
      </div>
      <div class="form-group">
+
        <label for="inputStock" class="sr-only">Stock</label>
        <input type="text" id="inputStock" class="form-control mb-4" name="stock" placeholder="Stock"  value="{{ $producto["stock"] }}">
+
        @if ($errors->has("stock"))
        <small  class="text-danger"> {{ $errors->first("stock") }}</small>
        @endif

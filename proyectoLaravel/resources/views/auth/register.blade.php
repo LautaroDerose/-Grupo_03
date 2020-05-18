@@ -90,7 +90,6 @@ Registro
       </form>
     </div>
     <script src="/js/validacion_registro.js"></script>
-
   </div>
 
 @endsection
