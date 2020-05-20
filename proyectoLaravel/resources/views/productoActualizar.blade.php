@@ -57,16 +57,18 @@ Actualizar Producto
       <small  class="text-danger"> </small>
 
     </div>
-    <select id="categoria" name="categoria" class="custom-select">
-      <option selected>Open this select menu</option>
-      @forelse($categorias as $categoria)
+     <select id="categoria" name="categoria" class="custom-select">
+      <option value="0" >Open this select menu</option>
+      @foreach($categorias as $categoria)
       @if($categoria->borrado_logico == 0)
       <option value="{{$categoria->id}}"> {{$categoria->nombre}}</option>
       @endif
-      @empty
-        <option value="0">Ninguno</option>
-      @endforelse
+
+    @endforeach
     </select>
+    @if ($errors->has("categoria"))
+       <small  class="text-danger"> {{ $errors->first("categoria") }}</small>
+       @endif
 
     <div class='container mb-4'>
       <label for="archivo">Foto de producto</label>

@@ -16,7 +16,7 @@
             <h3>Detalle de producto</h3>
             @if($producto["foto"] != null)
 
-            <img src="{{asset('/storage/fotoProducto/$producto->foto')}}" class="card-img-top" alt="image-product">
+            <img src="/storage/fotoProducto/{{$producto->foto}}" class="card-img-top" alt="image-product">
             @else
               <img src="{{asset('unnamed.png')}}" class="card-img-top" alt="image-product">
             @endif

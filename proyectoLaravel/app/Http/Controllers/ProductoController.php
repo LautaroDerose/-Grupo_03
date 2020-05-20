@@ -95,10 +95,13 @@ class ProductoController extends Controller
     }
 
     public function actualizar(Request $request){
+        
         $errores = [
             "nombre" => 'required|string|max:60|min:3',
             "precio" => 'required|numeric',
             "descripcion" => 'string|max:255|',
+            "stock" => 'required|numeric',
+            
         ];
 
         $mensajes = [
@@ -116,6 +119,11 @@ class ProductoController extends Controller
         $producto->precio = $request["precio"];
         $producto->descripcion = $request["descripcion"];
         $producto->stock = $request["stock"];
+
+        if($request["categoria"] != 0){
+            $producto->categoria_id = $request["categoria"];
+        }
+        
 
 
         if ( $request->file("archivo") != null ) {
